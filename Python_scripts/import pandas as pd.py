@@ -3,18 +3,18 @@ import os
 
 # 1. Cargar el archivo de Excel
 # Asegúrate de que el nombre del archivo sea el correcto
-nombre_archivo = r"C:\Users\Andres Sanchez\Desktop\3333.xlsx"
+nombre_archivo = r"C:\Users\Andres Sanchez\Desktop\Libro1090.xlsx"
 excel_file = pd.ExcelFile(nombre_archivo)
 
 # 2. Cargar las dos hojas en DataFrames
-df_clientes = pd.read_excel(excel_file, sheet_name='Hoja1')
-df_hoja1 = pd.read_excel(excel_file, sheet_name='Hoja2')
+df_clientes = pd.read_excel(excel_file, sheet_name='Hoja2')
+df_hoja1 = pd.read_excel(excel_file, sheet_name='Hoja1')
 
 # 3. Identificar los registros de Hoja1 que NO están en clientes_ingresos
 resultado = df_hoja1[~df_hoja1['NIT'].isin(df_clientes['NIT'])]
 
 # 4. Definir nombre de salida
-archivo_salida = 'Resultado_Diferencias2.xlsx'
+archivo_salida = 'Resultado_Diferencias9.xlsx'
 
 # 5. Guardar el resultado
 with pd.ExcelWriter(archivo_salida, engine='openpyxl') as writer:
