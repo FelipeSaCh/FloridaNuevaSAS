@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de Cargo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+ 
+    body {
+      background: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+ 
+    .doc-wrapper {
+      font-size: 11px;
+      color: #000;
+      background: #fff;
+      border: 1.5px solid #000;
+      width: 700px;
+      max-width: 100%;
+    }
+ 
+    .doc-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+ 
+    .doc-table td {
+      border: 1px solid #000;
+      padding: 5px 7px;
+      vertical-align: middle;
+      color: #000;
+    }
+ 
+    .logo-cell {
+      width: 110px;
+      text-align: center;
+      padding: 6px;
+      border-right: 1px solid #000;
+    }
+ 
+    .logo-cell img {
+      width: 80px;
+      height: auto;
+    }
+ 
+    .title-cell {
+      text-align: center;
+      font-weight: bold;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+ 
+    .meta-cell {
+      width: 180px;
+      font-size: 10px;
+      line-height: 1.7;
+      padding: 5px 8px;
+    }
+ 
+    .section-header td {
+      font-weight: bold;
+      font-size: 11px;
+      text-align: center;
+      letter-spacing: 0.3px;
+      padding: 5px;
+      border-top: 1.5px solid #000;
+    }
+ 
+    .label-cell {
+      font-weight: bold;
+      width: 38%;
+      white-space: nowrap;
+    }
+ 
+    .value-cell {
+      width: 62%;
+    }
+ 
+    .half-label {
+      font-weight: bold;
+      width: 28%;
+      white-space: nowrap;
+    }
+ 
+    .half-value {
+      width: 22%;
+    }
+ 
+    .medium-cell {
+      min-height: 50px;
+      vertical-align: top;
+      padding: 7px;
+    }
+ 
+    .tall-cell {
+      min-height: 160px;
+      vertical-align: top;
+      padding: 7px;
+    }
+ 
+    .acceptance-text {
+      font-size: 10px;
+      line-height: 1.7;
+      text-align: justify;
+      padding: 10px 30px;
+    }
+ 
+    .acceptance-text p {
+      margin-bottom: 6px;
+    }
+ 
+    .acceptance-center {
+      text-align: center;
+      margin-top: 8px;
+    }
+ 
+    .acceptance-sign {
+      text-align: center;
+      margin-top: 6px;
+    }
+ 
+    .sign-space {
+      height: 55px;
+    }
+ 
+    .bullet-list {
+      margin: 0;
+      padding-left: 16px;
+      list-style-type: disc;
+    }
+ 
+    .bullet-list li {
+      margin-bottom: 3px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+ 
+<div class="doc-wrapper">
+ 
+  <!-- HEADER -->
+  <table class="doc-table">
+    <tr>
+      <td class="logo-cell">
+        <img src="https://storage.googleapis.com/glide-prod.appspot.com/uploads-v2/GgV6wspbUz4JCNwiNEfC/pub/jrM9UxOLxUtZy0h9lGfC.png" alt="Logo">
+      </td>
+      <td class="title-cell">PERFIL DE CARGO</td>
+      <td class="meta-cell">
+        <strong>CÓDIGO:</strong> SIG-FR-TH-001<br>
+        <strong>VERSIÓN:</strong> 01<br>
+        <strong>FECHA:</strong> 02/02/2026
+      </td>
+    </tr>
+  </table>
+ 
+  <!-- INFORMACIÓN GENERAL -->
+  <table class="doc-table">
+    <tr class="section-header">
+      <td colspan="4">INFORMACIÓN GENERAL</td>
+    </tr>
+    <tr>
+      <td class="label-cell">CARGO</td>
+      <td class="value-cell" colspan="3">TEXTOCARGO</td>
+    </tr>
+    <tr>
+      <td class="label-cell">OBJETO DEL CARGO</td>
+      <td class="value-cell" colspan="3">TEXTOOBJETIVOCARGO</td>
+    </tr>
+    <tr>
+      <td class="label-cell">DEPENDENCIA A LA QUE PERTENECE</td>
+      <td class="value-cell" colspan="3">TEXTODEPENDENCIA</td>
+    </tr>
+    <tr>
+      <td class="half-label">REPORTAR A</td>
+      <td class="half-value">TEXTOREPORTARA</td>
+      <td class="half-label" style="width:20%">AREAS A CARGO</td>
+      <td>TEXTOAREASCARGO</td>
+    </tr>
+  </table>
+ 
+  <!-- REQUISITOS -->
+  <table class="doc-table">
+    <tr class="section-header">
+      <td colspan="4">IDENTIFICACIÓN DE REQUISITOS EXIGIBLES AL PERSONAL</td>
+    </tr>
+    <tr>
+      <td class="half-label">NIVEL EDUCATIVO</td>
+      <td colspan="3">TEXTONIVELEDU</td>
+    </tr>
+    <tr>
+      <td class="half-label">REQUISITOS DE FORMACIÓN</td>
+
+      <td colspan="3">TEXTREQFORM</td>
+    </tr>
+    <tr>
+      <td class="label-cell">EXPERIENCIA LABORAL (tipo y tiempo)</td>
+      <td class="value-cell" colspan="3">TEXTEXPLAB</td>
+    </tr>
+    <tr>
+      <td class="label-cell" style="vertical-align:top; padding-top:5px;">HABILIDADES</td>
+      <td class="value-cell medium-cell" colspan="3">TEXTHABIL</td>
+    </tr>
+  </table>
+ 
+  <!-- AUTORIZADO PARA -->
+  <table class="doc-table">
+    <tr>
+      <td class="label-cell">AUTORIZADO PARA:</td>
+      <td class="value-cell medium-cell">TEXTAUTORIZ</td>
+    </tr>
+  </table>
+ 
+  <!-- FUNCIONES -->
+  <table class="doc-table">
+    <tr class="section-header">
+      <td>FUNCIONES Y RESPONSABILIDADES DEL CARGO</td>
+    </tr>
+    <tr>
+      <td class="tall-cell">TEXTFUNCIONES</td>
+    </tr>
+  </table>
+ 
+  <!-- FACTORES DE RIESGO -->
+  <table class="doc-table">
+    <tr class="section-header">
+      <td>FACTORES DE RIESGO</td>
+    </tr>
+    <tr>
+      <td class="medium-cell">TEXTFACTRIESGO</td>
+    </tr>
+  </table>
+ 
+  <!-- EPP -->
+  <table class="doc-table">
+    <tr class="section-header">
+      <td>ELEMENTOS DE PROTECCIÓN PERSONAL</td>
+    </tr>
+    <tr>
+      <td class="medium-cell">TEXTELEMPROTEC</td>
+    </tr>
+  </table>
+ 
+  <!-- MANIFIESTO -->
+  <table class="doc-table">
+    <tr class="section-header">
+      <td>MANIFIESTO DE ACEPTACIÓN</td>
+    </tr>
+    <tr>
+      <td>
+        <div class="acceptance-text">
+          <p>Yo, _________________________________________ mayor de edad, vecino de la ciudad de Medellín, identificado como aparece al pie de mi firma, actuando en nombre propio, manifiesto espontáneamente y libre de todo vicio haber revisado, leído, interiorizado y aceptado en su totalidad el Reglamento Interno de Trabajo y el Manual de Funciones para el cargo que la compañía ASESORIAS CONTABLES Y TRIBUTARIAS ha puesto a mi disposición y conocimiento.</p>
+          <p>Ratifico mi conformidad con el contenido de ambas directrices, sin encontrar reproche, molestia o corrección alguna con lo allí estipulado.</p>
+          <p class="acceptance-center">En constancia de lo anterior, a los ___ del mes ___ del año ____</p>
+          <p class="acceptance-sign">Acepto,</p>
+          <br>
+          <p>TRABAJADOR : _______________________________ C.C ___________________________________</p>
+          <br>
+          <p>JEFE INMEDIATO______________________________ C.C ___________________________</p>
+        </div>
+        <div class="sign-space"></div>
+      </td>
+    </tr>
+  </table>
+ 
+</div>
+ 
+ 
+<script>
+  /**
+   * Busca todas las celdas que tengan texto con items separados por "*"
+   * y los convierte en una lista <ul> con viñetas.
+   * Funciona para: tall-cell, medium-cell, y value-cell.
+   */
+  document.querySelectorAll('.tall-cell, .medium-cell, .value-cell').forEach(function(cell) {
+    var text = cell.textContent.trim();
+    if (!text || !text.includes('*')) return;
+ 
+    // Dividir por asterisco, limpiar espacios y filtrar vacíos
+    var items = text.split('*').map(function(s) { return s.trim(); }).filter(Boolean);
+ 
+    if (items.length <= 1) return;
+ 
+    var ul = document.createElement('ul');
+    ul.className = 'bullet-list';
+ 
+    items.forEach(function(item) {
+      var li = document.createElement('li');
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+ 
+    cell.textContent = '';
+    cell.appendChild(ul);
+  });
+</script>
+ 
+Script
+
+</body>
+</html>
