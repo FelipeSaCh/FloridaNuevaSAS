@@ -1,393 +1,735 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Formulario 350 DIAN - Réplica Exacta</title>
-    <style>
-        body {
-            font-family: 'Arial Narrow', Arial, sans-serif;
-            font-size: 9px;
-            color: #000;
-            background-color: #f0f0f0;
-            margin: 10px;
-        }
-        .form-container {
-            width: 820px;
-            background-color: #fff;
-            border: 2px solid #000;
-            padding: 8px;
-            margin: 0 auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 4px;
-        }
-        th, td {
-            border: 1px solid #000;
-            padding: 2px 4px;
-            vertical-align: middle;
-        }
-        .text-center { text-align: center; }
-        .text-right { text-align: right; }
-        .bg-gray { background-color: #f2f2f2; }
-        .bg-header { background-color: #e1e1e1; font-weight: bold; }
-        
-        /* Cabecera específica */
-        .dian-logo { width: 15%; text-align: center; font-weight: bold; font-size: 14px; }
-        .form-title { width: 65%; font-size: 12px; font-weight: bold; text-align: center; }
-        .form-num { width: 20%; font-size: 26px; font-weight: bold; text-align: center; }
-        
-        .lbl { font-size: 8px; color: #333; display: block; font-weight: bold; }
-        .box-num { font-size: 8px; font-weight: bold; background: #e1e1e1; padding: 0 2px; margin-right: 3px; display: inline-block; width: 14px; text-align: center; }
-        
-        .borrador-text {
-            color: #ff6666;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: center;
-            letter-spacing: 5px;
-        }
-        
-        /* Celdas de valores numéricos */
-        .val-cell {
-            font-family: monospace;
-            font-size: 11px;
-            text-align: right;
-            width: 95px;
-            background-color: #fff;
-        }
-        .val-cell span {
-            float: left;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Formulario 350 DIAN - Réplica Exacta</title>
+
+<style>
+/* ===================== PRIMER HTML ===================== */
+
+/*@media print {
+    body { margin: 0; background-color: #fff; }
+    .form-container { border: 1px solid #000 !important; }
+}
+
+/* ===================== AJUSTE IMPRESIÓN HOJA CARTA ===================== */
+
+@page {
+    size: letter portrait;
+    margin: 4mm;
+}
+
+html, body {
+    width: 216mm;
+    height: 279mm;
+    margin: 0;
+    padding: 0;
+    background: #fff;
+}
+
+@media print {
+
+    body {
+        zoom: 93%;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        border: 1px solid #000 !important;
+        page-break-inside: avoid;
+    }
+
+    table, tr, td, th {
+        page-break-inside: avoid !important;
+    }
+
+    .fecha-superior {
+        margin-left: 10px;
+        margin-bottom: 2px;
+        font-size: 11px;
+    }
+
+    td, th {
+        padding: 1px 2px !important;
+    }
+
+    .form-num-txt {
+        font-size: 34px;
+    }
+
+    .borrador-text {
+        font-size: 22px;
+    }
+
+    .cell-value {
+        font-size: 8px;
+    }
+
+    .box-num {
+        font-size: 6px;
+        width: 20px;
+        min-width: 20px;
+    }
+
+    .vertical-label,
+    .vertical-text {
+        font-size: 6px;
+    }
+
+}
+
+body {
+    font-family: 'Arial Narrow', Arial, sans-serif;
+    font-size: 9px;
+    color: #000;
+    background-color: #ffffff;
+    margin: 10px;
+}
+
+.fecha-superior {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 80px;
+    margin-bottom: 5px;
+}
+
+.form-container {
+    width: 790px;
+    background-color: #fff;
+    border: 3px solid #000;
+    margin: 0 auto 25px auto;
+    box-sizing: border-box;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid #000;
+    padding: 2px 4px;
+    vertical-align: top;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.dian-logo { width: 17%; padding: 5px; }
+.form-title { width: 63%; font-size: 15px; font-weight: bold; text-align: center; vertical-align: middle; }
+.form-num-box { width: 20%; text-align: center; vertical-align: middle; }
+.form-num-txt {
+    font-size: 42px;
+    font-weight: bold;
+    border: 1px solid #0056b3;
+    border-radius: 8px;
+    padding: 0px 25px;
+    display: inline-block;
+}
+
+.lbl { font-size: 8px; font-weight: bold; display: block; margin-bottom: 2px; }
+
+.val-box {
+    border: 1px solid #000;
+    padding: 1px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    float: right;
+    margin-top: -12px;
+    background: #fff;
+}
+
+.borrador-container { text-align: center; vertical-align: middle; }
+
+.borrador-text {
+    color: transparent;
+    -webkit-text-stroke: 1px #d9534f;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    display: inline-block;
+    font-family: 'Arial Black', Arial, sans-serif;
+}
+
+.vertical-text {
+    width: 3%;
+    font-size: 7px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    border-right: 1px solid #000;
+    padding: 2px;
+    background-color: #fff;
+}
+
+.nit-input-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 8px;
+    padding: 0 20px;
+}
+
+.dv-box {
+    border: 1px solid #000;
+    width: 14px;
+    height: 16px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.razon-social-text {
+    font-size: 11px;
+    font-weight: bold;
+    margin-top: 3px;
+    padding-left: 15px;
+}
+
+.cod-adm-container {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin-top: 2px;
+}
+
+.digit-box {
+    border: 1px solid #000;
+    width: 10px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.sm-text { font-size: 8px; font-weight: bold; vertical-align: middle; }
+.val-nit-sec { font-size: 11px; font-weight: bold; text-align: center; padding-top: 5px; }
+.error-text { font-size: 11px; font-weight: bold; text-align: center; padding-top: 5px; }
+
+/* ===================== SEGUNDO HTML ===================== */
+
+.bg-header { background-color: #ffffff; font-weight: bold; font-size: 10px; padding: 3px; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+th {
+    border: 1px solid #000;
+    padding: 1.5px 3px;
+    vertical-align: middle;
+    box-sizing: border-box;
+}
+
+.val-cell {
+    width: 14%;
+    padding: 0 !important;
+    height: 18px;
+}
+
+.cell-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.box-num {
+    font-family: Arial, sans-serif;
+    font-size: 7.5px;
+    color: #444;
+    width: 24px;
+    min-width: 24px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 3px;
+    border-right: 1px solid #444;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+.cell-value {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    flex-grow: 1;
+    text-align: right;
+    padding-right: 5px;
+}
+
+.vertical-label {
+    font-size: 7px;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    text-align: center;
+    font-weight: normal;
+    width: 15px;
+    padding: 2px;
+}
+</style>
 </head>
+
 <body>
+
+<!-- ===================== PRIMER BLOQUE ===================== -->
+
+
+
+<div class="fecha-superior">
+lunes, 23 de febrero de 2026
+</div>
 
 <div class="form-container">
 
-    <div style="font-size: 10px; margin-bottom: 2px;">lunes, 23 de febrero de 2026 [cite: 1]</div>
-
-    <table>
+    <table style="border-bottom: 2px solid #000;">
         <tr>
-            <td class="dian-logo">DIAN [cite: 2]<br><span style="font-size:7px; font-weight:normal;">POR UNA COLOMBIA MÁS HONESTA</span></td>
-            <td class="form-title">Declaración Mensual de Retención en la Fuente [cite: 3]</td>
-            <td class="form-num">350 [cite: 4]</td>
-        </tr>
-    </table>
-
-    <table>
-        <tr>
-            <td style="width: 15%;"><span class="lbl">1. Año</span><strong>2025</strong> [cite: 5, 6]</td>
-            <td style="width: 15%;"><span class="lbl">3. Periodo</span><strong>01</strong> [cite: 7]</td>
-            <td class="borrador-text" style="width: 40%;">BORRADOR [cite: 9]</td>
-            <td style="width: 30%;"><span class="lbl">4. Número de formulario</span><span style="font-size:9px; font-family:monospace;">350400000000 0</span> [cite: 8, 19]</td>
-        </tr>
-    </table>
-
-    <table>
-        <tr>
-            <td style="width: 25%;"><span class="lbl">5. Número de Identificación (NIT)</span>-</td>
-            <td style="width: 5%;"><span class="lbl">6. DV</span></td>
-            <td style="width: 18%;"><span class="lbl">7. Primer Apellido</span> [cite: 11]</td>
-            <td style="width: 18%;"><span class="lbl">8. Segundo Apellido</span> [cite: 12]</td>
-            <td style="width: 18%;"><span class="lbl">9. Primer Nombre</span> [cite: 13]</td>
-            <td style="width: 16%;"><span class="lbl">10. Otros Nombres</span> [cite: 14]</td>
-        </tr>
-        <tr>
-            <td colspan="5">
-                <span class="lbl">11. Razon social</span>
-                <strong>VALIDAR NIT</strong> [cite: 15, 16]
+            <td class="dian-logo" style="border: none; border-right: 1px solid #000;">
+                <span style="font-size: 8px; color: red; position: absolute; left: 2px; top: 10px;">o</span>
+                <span class="dian-logo img-text">DIAN</span>
+                <span class="slogan">POR UNA COLOMBIA MÁS HONESTA</span>
             </td>
-            <td><span class="lbl">12. Cód. Direc.</span><div class="text-center">1</div></td>
+            <td class="form-title" style="border: none; border-right: 1px solid #000;">
+                Declaración Mensual de Retención en la Fuente
+            </td>
+            <td class="form-num-box" style="border: none;">
+                <span class="form-num-txt">350</span>
+            </td>
+        </tr>
+    </table>
+
+    <table style="border-bottom: 2px solid #000;">
+        <tr>
+            <td style="width: 17%; border: none; border-right: 1px solid #000; height: 35px;">
+                <span style="font-size: 8px; color: red; position: absolute; left: 2px; top: 12px;">o</span>
+                <span class="lbl">1. Año</span>
+                <div class="val-box" style="margin-right: 10px;">2025</div>
+            </td>
+            <td style="width: 13%; border: none; border-right: 1px solid #000;">
+                <span class="lbl">3. Periodo</span>
+                <div class="val-box" style="padding: 1px 6px;">01</div>
+            </td>
+            <td class="borrador-container" style="width: 35%; border: none; border-right: 1px solid #000;">
+                <div class="borrador-text">BORRADOR</div>
+            </td>
+            <td style="width: 35%; border: none;">
+                <span class="lbl">4. Número de formulario</span>
+                <span style="font-family: monospace; font-size: 10px; display: block; margin-top: 5px; margin-left: 40px;">350600000000 0</span>
+            </td>
+        </tr>
+    </table>
+
+    <table style="border-bottom: 1px solid #000;">
+        <tr>
+            <td rowspan="2" class="vertical-text" style="border: none; border-right: 1px solid #000;">
+                Datos del<br>declarante
+            </td>
+            
+            <td style="width: 24%; height: 28px; border: none; border-right: 1px solid #000; border-bottom: 1px solid #000;">
+                <span class="lbl">5. Número de Identificación (NIT):</span>
+                <div class="nit-input-container">
+                    <span>-</span>
+                    <div class="dv-box"></div>
+                </div>
+            </td>
+            <td style="width: 4%; border: none; border-right: 1px solid #000; border-bottom: 1px solid #000; background: #fafafa;"><span class="lbl">6.DV</span></td>
+            <td style="width: 18%; border: none; border-right: 1px solid #000; border-bottom: 1px solid #000;"><span class="lbl">7. Primer Apellido</span></td>
+            <td style="width: 18%; border: none; border-right: 1px solid #000; border-bottom: 1px solid #000;"><span class="lbl">8. Segundo apellido</span></td>
+            <td style="width: 18%; border: none; border-right: 1px solid #000; border-bottom: 1px solid #000;"><span class="lbl">9. Primer nombre</span></td>
+            <td style="width: 15%; border: none; border-bottom: 1px solid #000;"><span class="lbl">10. Otros nombres</span></td>
+        </tr>
+        <tr>
+            <td colspan="5" style="border: none; border-right: 1px solid #000; height: 28px;">
+                <span class="lbl">11. Razón social</span>
+                <div class="razon-social-text">VALIDAR NIT</div>
+            </td>
+            <td style="border: none; text-align: center;">
+                <span class="lbl" style="text-align: left;">12. Cód. Admón</span>
+                <div class="cod-adm-container">
+                    <div class="digit-box">1</div>
+                    <div class="digit-box">1</div>
+                </div>
+            </td>
         </tr>
     </table>
 
     <table>
         <tr>
-            <td style="width: 18%; font-size:7px;">Si es una corrección indique: [cite: 17]</td>
-            <td style="width: 8%;"><span class="lbl">25. Cód.</span> [cite: 18]</td>
-            <td style="width: 28%;"><span class="lbl">26. No. Formulario anterior</span> [cite: 19]</td>
-            <td style="width: 26%; font-size:7px;"><span class="lbl">27. Autorretencion personas jurídicas exoneradas de aportes (Art 114-1 ET) Actividad económica principal</span> [cite: 20] <div class="text-right" style="color:blue; font-weight:bold;">VALIDAR NIT</div></td>
-            <td style="width: 10%;"><span class="lbl">28. Tarifa</span> [cite: 22]</td>
-            <td style="width: 10%;" class="text-center">#N/D [cite: 23]</td>
+            <td class="sm-text" style="width: 18%; border: none; border-right: 1px solid #000; padding-top: 5px;">
+                Si es una corrección indique:
+            </td>
+            <td style="width: 11%; border: none; border-right: 1px solid #000;">
+                <span class="lbl">25. Cód.</span>
+            </td>
+            <td style="width: 25%; border: none; border-right: 1px solid #000;">
+                <span class="lbl">26. No. Formulario anterior</span>
+            </td>
+            <td style="width: 21%; border: none; border-right: 1px solid #000; font-size: 7.5px; line-height: 8px;">
+                <span class="lbl" style="font-size: 7px; font-weight: normal;">27. Autorretenedores personas jurídicas exoneradas de aportes (Art 114-1 ET) Actividad económica principal</span>
+                <div class="val-nit-sec">VALIDAR NIT</div>
+            </td>
+            <td style="width: 10%; border: none; border-right: 1px solid #000;">
+                <span class="lbl">28. Tarifa</span>
+            </td>
+            <td style="width: 12%; border: none;">
+                <div class="error-text">#N/D</div>
+            </td>
         </tr>
     </table>
 
-    <div class="bg-header text-center" style="border: 1px solid #000; border-bottom: none; padding: 3px;">
-        A título de impuesto sobre la renta y complementario [cite: 24]
+    <div class="text-center bg-header" style="border-bottom: 1px solid #000;">
+        A título de impuesto sobre la renta y complementario
     </div>
-    
+
     <table>
         <thead>
-            <tr class="bg-gray">
-                <th rowspan="2" style="width: 32%;">Concepto </th>
-                <th colspan="2" style="width: 34%;">A personas Jurídicas </th>
-                <th colspan="2" style="width: 34%;">A personas Naturales </th>
+            <tr>
+                <th rowspan="2" colspan="2" style="width: 44%; font-size: 9px;">Concepto</th>
+                <th colspan="2" style="width: 28%;">A personas jurídicas</th>
+                <th colspan="2" style="width: 28%;">A personas Naturales</th>
             </tr>
-            <tr class="bg-gray">
-                <th style="font-size:8px; width:17%;">Base sujeta a Retención<br>para pagos o abonos en cuenta </th>
-                <th style="font-size:8px; width:17%;">Retenciones a título de renta </th>
-                <th style="font-size:8px; width:17%;">Base sujeta a Retención<br>para pagos o abonos en cuenta </th>
-                <th style="font-size:8px; width:17%;">Retenciones a título de renta </th>
+            <tr>
+                <th style="font-size: 7.5px; font-weight: normal; width: 14%;">Base sujeta a Retención para pagos o abonos en cuenta</th>
+                <th style="font-size: 7.5px; font-weight: normal; width: 14%;">Retenciones a título de renta</th>
+                <th style="font-size: 7.5px; font-weight: normal; width: 14%;">Base sujeta a Retención para pagos o abonos en cuenta</th>
+                <th style="font-size: 7.5px; font-weight: normal; width: 14%;">Retenciones a título de renta</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td>Rentas de Trabajo </td>
-                <td class="bg-gray"></td>
-                <td class="bg-gray"></td>
-                <td class="val-cell"><span class="box-num">77</span>0 </td>
-                <td class="val-cell"><span class="box-num">93</span>0 </td>
+                <td colspan="2">Rentas de Trabajo</td>
+                <td style="background:#f4f4f4;"></td><td style="background:#f4f4f4;"></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">77</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">93</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Rentas de pensiones </td>
-                <td class="bg-gray"></td>
-                <td class="bg-gray"></td>
-                <td class="val-cell"><span class="box-num">78</span>0 </td>
-                <td class="val-cell"><span class="box-num">94</span>0 </td>
+                <td colspan="2">Rentas de pensiones</td>
+                <td style="background:#f4f4f4;"></td><td style="background:#f4f4f4;"></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">78</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">94</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Honorarios </td>
-                <td class="val-cell"><span class="box-num">29</span>0 </td>
-                <td class="val-cell"><span class="box-num">42</span>0 </td>
-                <td class="val-cell"><span class="box-num">79</span>0 </td>
-                <td class="val-cell"><span class="box-num">95</span>0 </td>
+                <td colspan="2">Honorarios</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">29</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">42</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">79</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">95</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Comisiones </td>
-                <td class="val-cell"><span class="box-num">30</span>0 </td>
-                <td class="val-cell"><span class="box-num">43</span>0 </td>
-                <td class="val-cell"><span class="box-num">80</span>0 </td>
-                <td class="val-cell"><span class="box-num">96</span>0 </td>
+                <td colspan="2">Comisiones</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">30</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">43</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">80</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">96</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Servicios </td>
-                <td class="val-cell"><span class="box-num">31</span>0 </td>
-                <td class="val-cell"><span class="box-num">44</span>0 </td>
-                <td class="val-cell"><span class="box-num">81</span>0 </td>
-                <td class="val-cell"><span class="box-num">97</span>0 </td>
+                <td colspan="2">Servicios</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">31</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">44</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">81</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">97</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Rendimientos financieros e intereses </td>
-                <td class="val-cell"><span class="box-num">32</span>0 </td>
-                <td class="val-cell"><span class="box-num">45</span>0 </td>
-                <td class="val-cell"><span class="box-num">82</span>0 </td>
-                <td class="val-cell"><span class="box-num">98</span>0 </td>
+                <td colspan="2">Rendimientos financieros e intereses</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">32</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">45</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">82</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">98</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Arrendamientos (Muebles e inmuebles) </td>
-                <td class="val-cell"><span class="box-num">33</span>0 </td>
-                <td class="val-cell"><span class="box-num">46</span>0 </td>
-                <td class="val-cell"><span class="box-num">83</span>0 </td>
-                <td class="val-cell"><span class="box-num">99</span>0 </td>
+                <td colspan="2">Arrendamientos (Muebles e inmuebles)</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">33</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">46</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">83</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">99</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Regalías y explotación de la propiedad intelectual </td>
-                <td class="val-cell"><span class="box-num">34</span>0 </td>
-                <td class="val-cell"><span class="box-num">47</span>0 </td>
-                <td class="val-cell"><span class="box-num">84</span>0 </td>
-                <td class="val-cell"><span class="box-num">100</span>0 </td>
+                <td colspan="2">Regalías y explotacion de la propiedad intelectual</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">34</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">47</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">84</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">100</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Dividendos y participaciones </td>
-                <td class="val-cell"><span class="box-num">35</span>0 </td>
-                <td class="val-cell"><span class="box-num">48</span>0 </td>
-                <td class="val-cell"><span class="box-num">85</span>0 </td>
-                <td class="val-cell"><span class="box-num">101</span>0 </td>
+                <td colspan="2">Dividendos y participaciones</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">35</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">48</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">85</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">101</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Compras </td>
-                <td class="val-cell"><span class="box-num">36</span>0 </td>
-                <td class="val-cell"><span class="box-num">49</span>0 </td>
-                <td class="val-cell"><span class="box-num">86</span>0 </td>
-                <td class="val-cell"><span class="box-num">102</span>0 </td>
+                <td colspan="2">Compras</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">36</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">49</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">86</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">102</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Transacciones con tarjeta débito y crédito </td>
-                <td class="val-cell"><span class="box-num">37</span>0 </td>
-                <td class="val-cell"><span class="box-num">50</span>0 </td>
-                <td class="val-cell"><span class="box-num">87</span>0 </td>
-                <td class="val-cell"><span class="box-num">103</span>0 </td>
+                <td colspan="2">Transacciones con tarjeta débito y crédito</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">37</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">50</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">87</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">103</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Contratos de construcción </td>
-                <td class="val-cell"><span class="box-num">38</span>0 </td>
-                <td class="val-cell"><span class="box-num">51</span>0 </td>
-                <td class="val-cell"><span class="box-num">88</span>0 </td>
-                <td class="val-cell"><span class="box-num">104</span>0 </td>
+                <td colspan="2">Contratos de construcción</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">38</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">51</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">88</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">104</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Enajenación de activos fijos de personas naturales ante notarios... </td>
-                <td class="bg-gray"></td>
-                <td class="bg-gray"></td>
-                <td class="val-cell"><span class="box-num">89</span>0 </td>
-                <td class="val-cell"><span class="box-num">105</span>0 </td>
+                <td colspan="2">Enajenacion de activos fijos de personas naturales ante notarios y autoridades de</td>
+                <td style="background:#f4f4f4;"></td><td style="background:#f4f4f4;"></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">89</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">105</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Loterías, rifas, apuestas y similares </td>
-                <td class="val-cell"><span class="box-num">39</span>0 </td>
-                <td class="val-cell"><span class="box-num">52</span>0 </td>
-                <td class="val-cell"><span class="box-num">90</span>0 </td>
-                <td class="val-cell"><span class="box-num">106</span>0 </td>
+                <td colspan="2">Loterías, rifas, apuestas y similares</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">39</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">52</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">90</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">106</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Hidrocarburos, carbón y demás productos mineros </td>
-                <td class="val-cell"><span class="box-num">40</span>0 </td>
-                <td class="val-cell"><span class="box-num">53</span>0 </td>
-                <td class="val-cell"><span class="box-num">91</span>0 </td>
-                <td class="val-cell"><span class="box-num">107</span>0 </td>
+                <td colspan="2">Hidrocarburos, carbón y demás productos mineros</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">40</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">53</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">91</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">107</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Otros pagos sujetos a retención </td>
-                <td class="val-cell"><span class="box-num">41</span>0 </td>
-                <td class="val-cell"><span class="box-num">54</span>0 </td>
-                <td class="val-cell"><span class="box-num">92</span>0 </td>
-                <td class="val-cell"><span class="box-num">108</span>0 </td>
+                <td colspan="2">Otros pagos sujetos a retención</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">41</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">54</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">92</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">108</span><span class="cell-value">0</span></div></td>
+            </tr>
+
+            <tr>
+                <td rowspan="2" class="vertical-label">Pagos al exterior</td>
+                <td>Pagos o abonos en cuenta al exterior a países sin convenio</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">55</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">57</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">109</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">111</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td style="font-size:7.5px; padding-left:10px;">Pagos o abonos al exterior a países sin convenio </td>
-                <td class="val-cell"><span class="box-num">55</span>0 </td>
-                <td class="val-cell"><span class="box-num">57</span>0 </td>
-                <td class="val-cell"><span class="box-num">109</span>0 </td>
-                <td class="val-cell"><span class="box-num">111</span>0 </td>
+                <td>Pagos o abonos en cuenta al exterior a países con convenio vigente</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">56</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">58</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">110</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">112</span><span class="cell-value">0</span></div></td>
+            </tr>
+
+            <tr>
+                <td rowspan="9" class="vertical-label">Autorretenciones</td>
+                <td>Contribuyentes exonerados de aportes (art 114-1 ET)</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">59</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">68</span><span class="cell-value">0</span></div></td>
+                <td style="background:#f4f4f4;"></td><td style="background:#f4f4f4;"></td>
             </tr>
             <tr>
-                <td style="font-size:7.5px; padding-left:10px;">Pagos o abonos al exterior a países con convenio vigente </td>
-                <td class="val-cell"><span class="box-num">56</span>0 </td>
-                <td class="val-cell"><span class="box-num">58</span>0 </td>
-                <td class="val-cell"><span class="box-num">110</span>0 </td>
-                <td class="val-cell"><span class="box-num">112</span>0 </td>
-            </tr>
-            
-            <tr>
-                <td rowspan="8" style="font-weight:bold; text-align:center; background-color:#f9f9f9; width:20px;">Autorretenciones </td>
-                <td style="font-size:8px;">Contribuyentes exonerados de aportes (art 114-1 ET) </td>
-                <td class="val-cell"><span class="box-num">59</span>0 </td>
-                <td class="val-cell"><span class="box-num">68</span>0 </td>
-                <td class="bg-gray" colspan="2"></td>
+                <td>Ventas</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">60</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">69</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">113</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">121</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Ventas </td>
-                <td class="val-cell"><span class="box-num">60</span>0 </td>
-                <td class="val-cell"><span class="box-num">69</span>0 </td>
-                <td class="val-cell"><span class="box-num">113</span>0 </td>
-                <td class="val-cell"><span class="box-num">121</span>0 </td>
+                <td>Honorarios</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">61</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">70</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">114</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">122</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Honorarios </td>
-                <td class="val-cell"><span class="box-num">61</span>0 </td>
-                <td class="val-cell"><span class="box-num">70</span>0 </td>
-                <td class="val-cell"><span class="box-num">114</span>0 </td>
-                <td class="val-cell"><span class="box-num">122</span>0 </td>
+                <td>Comisiones</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">62</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">71</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">115</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">123</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Comisiones </td>
-                <td class="val-cell"><span class="box-num">62</span>0 </td>
-                <td class="val-cell"><span class="box-num">71</span>0 </td>
-                <td class="val-cell"><span class="box-num">115</span>0 </td>
-                <td class="val-cell"><span class="box-num">123</span>0 </td>
+                <td>Servicios</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">63</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">72</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">116</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">124</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Servicios </td>
-                <td class="val-cell"><span class="box-num">63</span>0 </td>
-                <td class="val-cell"><span class="box-num">72</span>0 </td>
-                <td class="val-cell"><span class="box-num">116</span>0 </td>
-                <td class="val-cell"><span class="box-num">124</span>0 </td>
+                <td>Rendimientos financieros</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">64</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">73</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">117</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">125</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Rendimientos financieros </td>
-                <td class="val-cell"><span class="box-num">64</span>0 </td>
-                <td class="val-cell"><span class="box-num">73</span>0 </td>
-                <td class="val-cell"><span class="box-num">117</span>0 </td>
-                <td class="val-cell"><span class="box-num">125</span>0 </td>
+                <td>Pagos mensuales provisionales de carácter voluntario (hidrocarburos y demás prod mineros)</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">65</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">74</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">118</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">126</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td style="font-size:7.5px;">Pagos mensuales prov. de carácter voluntario (Hidrocarburos y mineros) / Exportaciones </td>
-                <td class="val-cell"><span class="box-num">65</span>0 </td>
-                <td class="val-cell"><span class="box-num">74</span>0 </td>
-                <td class="val-cell"><span class="box-num">118</span>0 </td>
-                <td class="val-cell"><span class="box-num">126</span>0 </td>
+                <td>Exportacion de hidricarburaos, carbon y demás productos mineros</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">66</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">75</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">119</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">127</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td>Otros conceptos </td>
-                <td class="val-cell"><span class="box-num">67</span>0 </td>
-                <td class="val-cell"><span class="box-num">76</span>0 </td>
-                <td class="val-cell"><span class="box-num">120</span>0 </td>
-                <td class="val-cell"><span class="box-num">128</span>0 </td>
+                <td>Otros conceptos</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">67</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">76</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">120</span><span class="cell-value">0</span></div></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">128</span><span class="cell-value">0</span></div></td>
             </tr>
-            
+
             <tr>
-                <td colspan="4">Menos retenciones en exceso o indebidas por operaciones anuladas, rescindidas o resueltas </td>
-                <td class="val-cell"><span class="box-num">129</span>0 </td>
+                <td colspan="4">Menos retenciones en exceso o indebidas por operaciones anuladas, rescindidas o resueltas</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">129</span><span class="cell-value">0</span></div></td>
+                <td style="background:#f4f4f4;"></td>
             </tr>
-            <tr class="bg-gray" style="font-weight:bold;">
-                <td colspan="4">Total retenciones renta y complementario [cite: 26]</td>
-                <td class="val-cell"><span class="box-num">130</span>0 [cite: 27, 28]</td>
+            <tr style="font-weight:bold;">
+                <td colspan="4">Total retenciones renta y complementario</td>
+                <td style="background:#f4f4f4;"></td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">130</span><span class="cell-value">0</span></div></td>
             </tr>
         </tbody>
     </table>
 
-    <div class="bg-header text-center" style="border: 1px solid #000; border-bottom: none; padding: 2px;">
-        Retenciones practicadas a título de Impuestos sobre las ventas (IVA) [cite: 29]
+    <div class="text-center bg-header" style="border-top:1px solid #000; border-bottom: 1px solid #000;">
+        Retenciones practicadas a título de impuestos sobre las ventas (IVA)
     </div>
     <table>
         <tbody>
             <tr>
-                <td style="width: 80%;"><span class="box-num">131</span>A responsables del impuesto sobre las ventas [cite: 31, 32]</td>
-                <td class="val-cell">0 [cite: 33]</td>
+                <td rowspan="3" class="vertical-label" style="width:15px;">A título de IVA</td>
+                <td>A responsables del impuesto sobre las ventas</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">131</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td><span class="box-num">132</span>Practicadas por servicios a no residentes o domiciliados [cite: 34]</td>
-                <td class="val-cell">0</td>
+                <td>Practicadas por servicios a no residentes o domiciliados</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">132</span><span class="cell-value">0</span></div></td>
             </tr>
             <tr>
-                <td><span class="box-num">133</span>Menos retenciones de períodos anteriores en exceso o indebidas o anuladas, rescindidas o resueltas [cite: 35]</td>
-                <td class="val-cell">0</td>
+                <td>Menos retenciones de periodos anteriores en exceso o indebidas o anuladas, rescindidas o resueltas</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">133</span><span class="cell-value">0</span></div></td>
             </tr>
-            <tr class="bg-gray" style="font-weight:bold;">
-                <td><span class="box-num">134</span>Total retenciones del IVA [cite: 36]</td>
-                <td class="val-cell">0 [cite: 38]</td>
-            </tr>
-            <tr>
-                <td><span class="box-num">135</span>Retenciones Impuesto de timbre nacional [cite: 40]</td>
-                <td class="val-cell">0</td>
-            </tr>
-            <tr class="bg-gray" style="font-weight:bold;">
-                <td><span class="box-num">136</span>Total retenciones [cite: 41]</td>
-                <td class="val-cell">0 [cite: 48]</td>
-            </tr>
-            <tr>
-                <td><span class="box-num">137</span>Más: Sanciones [cite: 42]</td>
-                <td class="val-cell">0 [cite: 49]</td>
-            </tr>
-            <tr class="bg-gray" style="font-weight:bold; font-size:10px;">
-                <td><span class="box-num">138</span>Total retenciones mas sanciones [cite: 53]</td>
-                <td class="val-cell">0 [cite: 55]</td>
+            <tr style="font-weight:bold;">
+                <td colspan="2">Total retenciones del IVA</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">134</span><span class="cell-value">0</span></div></td>
             </tr>
         </tbody>
     </table>
 
     <table>
+        <tbody>
+            <tr>
+                <td colspan="2">Retenciones impuesto de timbre nacional</td>
+                <td class="val-cell" style="width:14%;"><div class="cell-inner"><span class="box-num">135</span><span class="cell-value">0</span></div></td>
+            </tr>
+            <tr style="font-weight:bold;">
+                <td rowspan="3" class="vertical-label" style="width:15px;">Total</td>
+                <td>Total retenciones</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">136</span><span class="cell-value">0</span></div></td>
+            </tr>
+            <tr>
+                <td>Mas: Sanciones</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">137</span><span class="cell-value">0</span></div></td>
+            </tr>
+            <tr style="font-weight:bold;">
+                <td>Total retenciones mas sanciones</td>
+                <td class="val-cell"><div class="cell-inner"><span class="box-num">138</span><span class="cell-value">0</span></div></td>
+            </tr>
+        </tbody>
+    </table>
+
+ <table class="firma-section" style="border-top: 2px solid #000; width: 100%; border-collapse: collapse;">
         <tr>
-            <td style="width: 35%; height: 55px; vertical-align: top;">
+            <td colspan="2" style="width: 35%; height: 26px; border: 1px solid #000; padding: 2px 4px;">
                 <span class="lbl">139. No. Identificación signatario</span>
-                <strong>#N/D</strong> [cite: 56, 57]
-                <div style="margin-top:20px; border-top:1px dashed #999; font-size:7px;">Firma Declarante o quien lo representa [cite: 58]</div>
-                <span class="lbl" style="margin-top:2px;">981. Cód. Representación: <strong>18</strong></span> [cite: 59, 60]
             </td>
-            <td style="width: 35%; height: 55px; vertical-align: top;">
-                <span class="lbl">954. Con salvedades: &nbsp;&nbsp; ☐</span> [cite: 68]
-                <div style="margin-top:25px; border-top:1px dashed #999; font-size:7px;">Firma Contador o Revisor Fiscal [cite: 68]</div>
-                <span class="lbl" style="margin-top:2px;">1983. No. Tarjeta Profesional:</span> [cite: 69]
+            <td style="width: 30%; border: 1px solid #000; text-align: center; vertical-align: middle; font-size: 10px; font-weight: bold;">
+                #N/D
             </td>
-            <td style="width: 30%; background-color:#fafafa; vertical-align: top; padding: 5px;">
-                <span class="lbl">990. Pago Total</span> [cite: 61]
-                <div style="font-size:16px; font-weight:bold; font-family:monospace; text-align:right; margin-top:10px;">$0</div>
-                <div style="font-size:7px; color:#999; text-align:right; margin-top:8px;">2025 263599987 [cite: 73]</div>
+            <td colspan="2" style="width: 35%; border: 1px solid #000; border-bottom: none;"></td>
+        </tr>
+        <tr>
+            <td style="width: 23%; height: 32px; border: 1px solid #000; padding: 2px 4px; vertical-align: top;">
+                <span class="lbl" style="font-size: 6.5px; color:#555; display: block; margin-bottom: 5px;">Firma Declarante o quien lo representa:</span>
+                <span class="lbl">981. Cód. Representación</span>
+            </td>
+            <td style="width: 12%; border: 1px solid #000; vertical-align: middle; text-align: center; padding: 0 5px;">
+                <div style="border: 1px solid #000; width: 100%; height: 18px; line-height: 18px; font-size: 11px; font-weight: bold; text-align: center; background: #fff;">
+                    18
+                </div>
+            </td>
+            <td  style="width: 30%; border: 1px solid #000; background-color: #fafafa; text-align: center; vertical-align: top; padding: 4px;">
+                <span style="font-size: 6px; color: #666; display: block; margin-top: 2px; text-align: left; font-weight: bold;">997. Espacio exclusivo para el sello de la Entidad Recaudadora</span>
+            </td>
+            <td style="width: 13%; border: 1px solid #000; vertical-align: middle; padding: 2px 4px;">
+                <span class="lbl" style="font-size: 8px; font-weight: bold;">980. Pago Total</span>
+            </td>
+            <td style="width: 22%; border: 1px solid #000; vertical-align: middle; padding: 0 6px;">
+                <div style="border: 1px solid #000; width: 100%; height: 22px; background: #fff;"></div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 30px; border: 1px solid #000; padding: 2px 4px; vertical-align: top; position: relative;">
+                <span class="lbl">982. Cód. Contador o Revisor Fiscal</span>
+                <div style="border: 1px solid #000; width: 16px; height: 14px; position: absolute; right: 28px; top: 2px; background: #fff;"></div>
+                
+                <div style="border-left: 1px solid #000; height: 15px; width: 1px; margin-left: 110px; margin-top: 2px;"></div>
+                <div style="margin-top: 14px; font-size: 6.5px; color:#555; font-weight: bold;">
+                    Firma Contador o Revisor Fiscal. 994 Con salvedades
+                </div>
+                <div style="border: 1px solid #000; width: 16px; height: 14px; position: absolute; right: 8px; bottom: 4px; background: #fff;"></div>
+            </td>
+            <td>
+                <span class="lbl" style="text-decoration: underline;">Representante Legal</span>
+                <span style="font-size: 8px; font-weight: bold; display:block; margin-top:1px;">VALIDAR NIT</span>
+                <div style="margin-top: 1px; font-size: 8px;">
+                    <span class="lbl" style="display:inline;">CC</span>
+                    <span style="font-weight: bold; margin-left: 25px;">#N/D</span>
+                </div>
+            </td>
+            <td colspan="2" style="border: 1px solid #000; border-top: none;"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="height: 30px; border: 1px solid #000; padding: 2px 4px; vertical-align: top;">
+                <span class="lbl">983. No. Tarjeta Profesional</span>
+            </td>
+            <td style="border: 1px solid #000; padding: 2px 4px; vertical-align: top;">
+                <span class="lbl" style="text-decoration: underline;">Revisor Fiscal</span>
+                <span style="font-size: 8px; font-weight: bold; display:block; margin-top:1px;">VALIDAR NIT</span>
+                <div style="margin-top: 1px; font-size: 8px;">
+                    <span class="lbl" style="display:inline;">CC</span>
+                    <span style="font-weight: bold; margin-left: 25px;">##</span>
+                </div>
+            </td>
+            <td colspan="2" style="border: 1px solid #000; padding: 2px 4px; vertical-align: top;">
+                
             </td>
         </tr>
     </table>
+
+</div>
+
+</div>
+
+<!-- ===================== SEGUNDO BLOQUE ===================== -->
+
+
+
+<div style="width: 820px; margin: 0px auto; font-size: 8px; display: flex; justify-content: space-between;">
+    <div>Original: Administración S. A. E. DIAN</div>
+    <div style="font-weight: bold; letter-spacing: 2px;">2025 263599987</div>
+</div>
+
 
 </div>
 
