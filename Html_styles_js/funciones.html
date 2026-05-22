@@ -36,17 +36,17 @@
 
     .celda-proceso {
       font-weight: bold;
-      font-size: 9pt;
+      font-size: 12pt;
       width: 160px;
     }
 
     .celda-valor {
-      font-size: 10pt;
+      font-size: 12pt;
     }
 
     .celda-label {
       font-weight: bold;
-      font-size: 9pt;
+      font-size: 12pt;
       background: #f2f2f2;
       width: 130px;
     }
@@ -65,19 +65,19 @@
 
     .titulo-seccion {
       font-weight: bold;
-      font-size: 10pt;
+      font-size: 12pt;
       background: #f2f2f2;
       text-align: center;
     }
 
     .subtitulo-seccion {
       font-weight: bold;
-      font-size: 10pt;
+      font-size: 12pt;
     }
 
     .item {
       margin-bottom: 6px;
-      font-size: 10pt;
+      font-size: 12pt;
     }
 
     /* ESTILOS OPTIMIZADOS PARA IMPRESIÓN */
@@ -145,16 +145,20 @@
     const items = document.querySelectorAll('.item');
 
     items.forEach(item => {
-      let textoOriginal = item.innerText;
+      let textoOriginal = item.innerText.trim();
       const patronSeparadores = /(?=(?:^|\s)(?:[-*•]|\d+[\.)]|[a-zA-Z][\.)])\s*\S)/g;
+      
       let lineas = textoOriginal.split(patronSeparadores);
 
       let lineasLimpias = lineas
         .map(linea => linea.trim())
         .filter(linea => linea.length > 0);
 
-      // Envolvemos cada línea en un div con un margen inferior para simular el espacio de párrafo
-      // Puedes cambiar el '12px' por el espacio que desees (ej. 10px, 15px)
+      // Si la primera línea quedó con doble guion por el residuo del split, lo corregimos
+      if (lineasLimpias.length > 0 && lineasLimpias[0].startsWith('--')) {
+        lineasLimpias[0] = lineasLimpias[0].substring(1);
+      }
+
       item.innerHTML = lineasLimpias
         .map(linea => `<div style="margin-bottom: 12px;">${linea}</div>`)
         .join('');
