@@ -13,3 +13,4 @@ El proyecto utiliza un entorno virtual. Para ejecutar los scripts de Python, ase
 ## Actualizaciones Recientes
 
 *   **Plantillas 2025**: Se ha actualizado la plantilla HTML (`00 PLANTILLA  RETENCION.html`) con los ajustes y formatos correspondientes al año 2025 (incluyendo la sección de firmas, totales y retenciones de impuestos). También se encuentra disponible la versión en PDF (`00 PLANTILLA  RETENCION  2025 USAR ESTA.pdf`) para referencia y uso.
+*   **Formularios de Actas**: Se ha añadido un nuevo formulario HTML (`funciones.html`) diseñado para generar y presentar las actas de reuniones administrativas, incluyendo formatos estructurados para objetivos, asistentes y actividades realizadas.
