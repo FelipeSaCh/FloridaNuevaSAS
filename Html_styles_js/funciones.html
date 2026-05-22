@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Acta No. 74 – Reunión Administrativa</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #d0d0d0;
+      display: flex;
+      justify-content: center;
+      padding: 30px 0;
+      font-family: Arial, sans-serif;
+      font-size: 18pt;
+    }
+
+    .carta {
+      width: 816px;
+      min-height: 1056px;
+      background: #fff;
+      padding: 60px 70px;
+    }
+
+    table.encabezado {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 0;
+    }
+
+    table.encabezado td {
+      border: 1px solid #000;
+      padding: 6px 10px;
+      vertical-align: middle;
+    }
+
+    .celda-proceso {
+      font-weight: bold;
+      font-size: 9pt;
+      width: 160px;
+    }
+
+    .celda-valor {
+      font-size: 10pt;
+    }
+
+    .celda-label {
+      font-weight: bold;
+      font-size: 9pt;
+      background: #f2f2f2;
+      width: 130px;
+    }
+
+    table.cuerpo {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+    }
+
+    table.cuerpo td {
+      border: 1px solid #000;
+      padding: 6px 10px;
+      vertical-align: top;
+    }
+
+    .titulo-seccion {
+      font-weight: bold;
+      font-size: 10pt;
+      background: #f2f2f2;
+      text-align: center;
+    }
+
+    .subtitulo-seccion {
+      font-weight: bold;
+      font-size: 10pt;
+    }
+
+    .item {
+      margin-bottom: 6px;
+      font-size: 10pt;
+    }
+
+    /* ESTILOS OPTIMIZADOS PARA IMPRESIÓN */
+    @media print {
+      @page {
+        margin: 0; /* Remueve los márgenes físicos que mete el navegador por defecto */
+      }
+      body { 
+        background: none; 
+        padding: 0; 
+        margin: 0;
+      }
+      .carta { 
+        box-shadow: none;
+        width: 100%;
+        min-height: 0; /* Quitamos la altura fija para evitar el salto de página */
+        height: auto;
+        padding: 40px 50px; /* Reducimos ligeramente el padding solo en la impresión */
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="carta">
+
+  <table class="encabezado">
+    <tr>
+      <td class="celda-proceso">NOMBRE DEL PROCESO</td>
+      <td class="celda-valor" colspan="3">REUNION ADMINISTRATIVA</td>
+    </tr>
+    <tr>
+      <td class="celda-label">OBJETIVO:</td>
+      <td class="celda-valor" colspan="3">Análisis de funciones y entrega de cargos del equipo de trabajo</td>
+    </tr>
+    <tr>
+      <td class="celda-label">FECHA:</td>
+      <td class="celda-valor">TEXTDATE</td>
+      <td class="celda-label">NUMERO DE ACTA:</td>
+      <td class="celda-valor">TEXTACTNUMBER</td>
+    </tr>
+    <tr>
+      <td class="celda-label">ASISTENTES</td>
+      <td class="celda-valor" colspan="3">TEXTQUIENREALIZA</td>
+    </tr>
+  </table>
+
+  <table class="cuerpo">
+    <tr>
+      <td class="titulo-seccion">ACTIVIDADES REALIZADAS</td>
+    </tr>
+    <tr>
+      <td class="subtitulo-seccion">FUNCIONES</td>
+    </tr>
+    <tr>
+      <td>
+        <p class="item">-REALIZADO</p>
+      </td>
+    </tr>
+  </table>
+
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const items = document.querySelectorAll('.item');
+
+    items.forEach(item => {
+      let textoOriginal = item.innerText;
+      const patronSeparadores = /(?=(?:^|\s)(?:[-*•]|\d+[\.)]|[a-zA-Z][\.)])\s*\S)/g;
+      let lineas = textoOriginal.split(patronSeparadores);
+
+      let lineasLimpias = lineas
+        .map(linea => linea.trim())
+        .filter(linea => linea.length > 0);
+
+      // Envolvemos cada línea en un div con un margen inferior para simular el espacio de párrafo
+      // Puedes cambiar el '12px' por el espacio que desees (ej. 10px, 15px)
+      item.innerHTML = lineasLimpias
+        .map(linea => `<div style="margin-bottom: 12px;">${linea}</div>`)
+        .join('');
+    });
+  });
+</script>
+   Script
+
+</body>
+</html>
