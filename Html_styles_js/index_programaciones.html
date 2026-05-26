@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html style="background-color: #1f1f1f !important; height: fit-content;">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* Ajuste estricto al contenido para eliminar ventanas gigantes y scrolls */
+        html, body {
+            background-color: #1f1f1f !important;
+            margin: 0;
+            padding: 12px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            height: fit-content;
+            overflow: hidden;
+        }
+
+        /* Contenedor principal de la tarjeta */
+        .tarjeta-registro {
+            background-color: rgba(255, 255, 255, 0.03); /* Fondo sutilmente más claro para dar profundidad */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Borde fino y elegante */
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Fila superior: Contiene las fechas alineadas */
+        .seccion-fechas {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 18px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 12px;
+        }
+
+        /* Bloque individual de cada fecha */
+        .bloque-fecha {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .etiqueta {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(255, 255, 255, 0.4); /* Gris atenuado para etiquetas */
+            font-weight: 600;
+        }
+
+        .valor-fecha {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.85);
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* Cuerpo de la tarjeta: Información principal */
+        .seccion-contenido {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .bloque-info {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .valor-nombre {
+            font-size: 18px;
+            font-weight: 500;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+        }
+
+        .valor-actividad {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tarjeta-registro">
+        <div class="seccion-fechas">
+            <div class="bloque-fecha">
+                <span class="etiqueta">Inicio</span>
+                <span class="valor-fecha">FECHAINICIO</span>
+            </div>
+            <div class="bloque-fecha">
+                <span class="etiqueta">Fin</span>
+                <span class="valor-fecha">FECHAFIN</span>
+            </div>
+        </div>
+
+        <div class="seccion-contenido">
+            <div class="bloque-info">
+                <span class="etiqueta">Responsable</span>
+                <span class="valor-nombre">NOMBRE</span>
+            </div>
+            
+            <div class="bloque-info">
+                <span class="etiqueta">Actividad Programada</span>
+                <span class="valor-actividad">ACTIVIDAD</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

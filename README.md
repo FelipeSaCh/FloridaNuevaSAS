@@ -12,6 +12,8 @@ El proyecto utiliza un entorno virtual. Para ejecutar los scripts de Python, ase
 
 ## Actualizaciones Recientes
 
+*   **Plantilla de Programación de Actividades (Mayo 2026)**: Se añadió `Html_styles_js/index_programaciones.html`, una plantilla HTML diseñada en modo oscuro premium para mostrar tarjetas de actividades y tareas programadas. Incluye campos dinámicos para fecha de inicio/fin (`FECHAINICIO`, `FECHAFIN`), responsable (`NOMBRE`) y descripción de la actividad (`ACTIVIDAD`), ideal para integraciones de visualización rápida o tableros dinámicos.
+*   **Optimización del Conversor a CSV (Mayo 2026)**: Se actualizó `Python_scripts/convertiracsv_window.py` para hacer más portable el proceso de conversión de Excel a CSV. Ahora, en lugar de guardar los archivos en una ruta absoluta fija y rígida del disco local, el script detecta automáticamente la carpeta de origen de cada archivo `.xlsx` seleccionado y guarda su correspondiente archivo `.csv` en esa **misma ubicación**.
 *   **Transformación de Estructura ICA (Mayo 2026)**: Se incorporó el script `transformacion_ica.py`, diseñado para normalizar y reestructurar reportes del Impuesto de Industria y Comercio (ICA). Este script toma un archivo Excel con columnas organizadas horizontalmente por bimestres/períodos y las convierte a un formato vertical normalizado (tipo base de datos). 
     *   **Columnas base procesadas**: NIT, Empresa, ReteICA, AutoRete, Municipio.
     *   **Períodos soportados**: Bimestres del 1 al 6 y Anticipo Parcial de Fin de Año.
