@@ -1,7 +1,2 @@
 pandas
 openpyxl
-numpy
-scikit-learn
-matplotlib
-seaborn
-ipykernel
