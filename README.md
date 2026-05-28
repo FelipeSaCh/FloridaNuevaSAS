@@ -7,7 +7,7 @@ Este repositorio contiene diversos scripts y archivos utilizados por Florida Nue
 
 ## Estructura del Proyecto
 
-*   **`Html_styles_js/`**: Contiene archivos HTML y plantillas autónomas (ej. retenciones, perfiles de cargo, seguridad social y programaciones).
+*   **`Html_styles_js/`**: Contiene archivos HTML y plantillas autónomas (ej. retenciones, perfiles de cargo, seguridad social, programaciones y resoluciones de facturación).
 *   **`Python_scripts/`**: Contiene scripts en Python utilizados para el procesamiento de datos, comparación de libros, extracción de notas, conversión de formatos (Excel a CSV) y reestructuración de reportes.
 
 ## Requisitos
@@ -15,6 +15,6 @@ El proyecto utiliza un entorno virtual. Para ejecutar los scripts de Python, ase
 
 ## Actualizaciones Recientes
 
+*   **Tarjetas de Resoluciones de Facturación (Mayo 2026)**: Se incorporó `Html_styles_js/cards_resoluciones.html`, una plantilla HTML premium autocontenida y diseñada en modo oscuro para el seguimiento visual de resoluciones de facturación. Permite visualizar estructuradamente datos del cliente, número de resolución, NIT, tipo de factura, prefijo, responsable y destaca visualmente en color rojo de alerta los días pendientes.
 *   **Plantilla de Programación de Actividades (Mayo 2026)**: Se actualizó `Html_styles_js/index_programaciones.html`, una plantilla HTML diseñada en modo oscuro premium para mostrar tarjetas de actividades. Admite campos dinámicos para fecha de inicio/fin (`FECHAINICIO`, `FECHAFIN`), responsable (`NOMBRE`), descripción (`ACTIVIDAD`), cliente (`CLIENTE`) y estado/justificación (`TEXTRAZON`).
 *   **Optimización del Conversor a CSV (Mayo 2026)**: Se actualizó `Python_scripts/convertiracsv_window.py` para hacer más portable el proceso de conversión de Excel a CSV. Ahora el script detecta automáticamente la carpeta de origen del archivo `.xlsx` seleccionado y guarda su correspondiente `.csv` en esa misma ubicación, eliminando rutas absolutas estáticas.
-*   **Transformación de Estructura ICA (Mayo 2026)**: Se incorporó el script `transformacion_ica.py`, diseñado para normalizar y reestructurar reportes del Impuesto de Industria y Comercio (ICA). Este script toma un archivo Excel con columnas horizontales por bimestres/períodos y las convierte a un formato vertical normalizado (tipo base de datos).

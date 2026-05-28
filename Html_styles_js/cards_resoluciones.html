@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarjeta de Facturación</title>
+    <style>
+        /* Importación de una fuente moderna y limpia */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            background-color: #121212;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        /* Contenedor principal de la tarjeta */
+        .card {
+            background-color: #1e1e1e;
+            border: 1px solid #2d2d2d;
+            border-radius: 16px;
+            padding: 32px;
+            width: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            color: #e0e0e0;
+            box-sizing: border-box;
+        }
+
+        /* Encabezado: Nombre del usuario */
+        .card-header {
+            text-align: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #2d2d2d;
+            padding-bottom: 20px;
+        }
+
+        .card-header h2 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+        }
+
+        /* Cuerpo de datos estructurados */
+        .card-body {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .data-label {
+            color: #888888;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-value {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Estilo destacado para los días pendientes */
+        .data-row.highlight {
+            background-color: rgba(255, 75, 75, 0.1);
+            border: 1px solid rgba(255, 75, 75, 0.2);
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin-top: 8px;
+        }
+
+        .data-row.highlight .data-label {
+            color: #ff6b6b;
+        }
+
+        .data-row.highlight .data-value {
+            color: #ff4b4b;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        /* Pie de la tarjeta: Responsable */
+        .card-footer {
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #2d2d2d;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+        }
+
+        .footer-label {
+            color: #555555;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .footer-value {
+            color: #5cc2f2; /* Azul sutil para resaltar al responsable */
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>TEXTNOMBRE</h2>
+        </div>
+        
+        <div class="card-body">
+            <div class="data-row">
+                <span class="data-label">N° de Resolución:</span>
+                <span class="data-value">TEXTRESOLUCION</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">NIT:</span>
+                <span class="data-value">TEXTNIT</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Tipo:</span>
+                <span class="data-value">TEXTTIPO</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Factura:</span>
+                <span class="data-value">TEXTFACTURA</span>
+            </div>
+            
+            <div class="data-row">
+                <span class="data-label">Prefijo:</span>
+                <span class="data-value">TEXT_PREFIJO</span>
+            </div>
+            
+            <div class="data-row highlight">
+                <span class="data-label">Días Pendientes:</span>
+                <span class="data-value">TEXT_DIAS_PENDIENTES</span>
+            </div>
+        </div>
+        
+        <div class="card-footer">
+            <span class="footer-label">Responsable:</span>
+            <span class="footer-value">TEXT_RESPONSABLE</span>
+        </div>
+    </div>
+
+</body>
+</html>
