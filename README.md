@@ -7,15 +7,15 @@ Este repositorio contiene diversos scripts y archivos utilizados por Florida Nue
 
 ## Estructura del Proyecto
 
-*   **`Html_styles_js/`**: Contiene archivos HTML y plantillas autónomas (ej. retenciones, perfiles de cargo, seguridad social, programaciones, resoluciones de facturación y tareas asignadas).
-*   **`Python_scripts/`**: Contiene scripts en Python utilizados para el procesamiento de datos, comparación de libros, extracción de notas, conversión de formatos (Excel a CSV) y reestructuración de reportes.
+*   **`Html_styles_js/`**: Contiene archivos HTML y plantillas autónomas (ej. retenciones, perfiles de cargo, seguridad social, programaciones, resoluciones de facturación, facturas y tareas asignadas).
+*   **`Python_scripts/`**: Contiene scripts en Python utilizados para el procesamiento de datos, comparación de libros, extracción de notas, conversión de formatos (Excel a CSV), reestructuración de reportes y cruce/seguimiento de clientes.
 
 ## Requisitos
 El proyecto utiliza un entorno virtual. Para ejecutar los scripts de Python, asegúrate de activar el entorno e instalar las dependencias necesarias.
 
 ## Actualizaciones Recientes
 
-*   **Vista Detallada de Tareas (Mayo 2026)**: Se añadió `Html_styles_js/Tareas.html`, una plantilla HTML premium autocontenida y diseñada en modo oscuro (contraste negro absoluto) para mostrar de manera estructurada los detalles de tareas asignadas. Cuenta con una grilla organizada de dos columnas para visualizar cliente, asignatario, correo de contacto directo con enlace activo, tarea designada, fecha y observaciones de control de auditoría.
+*   **Expansión de Seguimiento de Clientes (Junio 2026)**: Se añadió `Python_scripts/seguimiento_clientes.py`, un script en Python que realiza un cruce matricial (*cross join*) de un archivo de clientes con los 12 meses del año para estructurar un historial completo de seguimiento de forma masiva en `dataset_por_mes.csv`.
+*   **Plantilla de Facturación Simple (Junio 2026)**: Se añadió `Html_styles_js/facturacion.html`, una plantilla HTML minimalista para la visualización de comprobantes de facturación (descripción, cantidad, precio e impuestos).
+*   **Parametrización de la Tarjeta de Tareas (Junio 2026)**: Se actualizó `Html_styles_js/Tareas.html` reemplazando los valores de prueba estáticos por marcadores dinámicos estándar (como `TEXTCLIENTE`, `TEXTDIRIGIDO`, `TEXTEMAIL`, `TEXTTAREA`, `TEXTFECHA`, `TEXTOBSERVACIÓN`, `TEXTCREADO`) para su integración directa con Glide Apps.
 *   **Rediseño Premium de Tarjetas de Resoluciones (Mayo 2026)**: Se rediseñó totalmente `Html_styles_js/cards_resoluciones.html`, transformándola en una tarjeta premium con fondo transparente adaptativo. Se agregaron nuevos campos de control para las fechas de emisión/expiración y meses pendientes, y se incorporó una sección de días pendientes con un banner degradado y tipografía gigante que cuenta con una **micro-animación de pulso brillante de texto (`textPulse`)** en rojo.
-*   **Plantilla de Programación de Actividades (Mayo 2026)**: Se actualizó `Html_styles_js/index_programaciones.html`, una plantilla HTML diseñada en modo oscuro premium para mostrar tarjetas de actividades. Admite campos dinámicos para fecha de inicio/fin (`FECHAINICIO`, `FECHAFIN`), responsable (`NOMBRE`), descripción (`ACTIVIDAD`), cliente (`CLIENTE`) y estado/justificación (`TEXTRAZON`).
-*   **Optimización del Conversor a CSV (Mayo 2026)**: Se actualizó `Python_scripts/convertiracsv_window.py` para hacer más portable el proceso de conversión de Excel a CSV. Ahora el script detecta automáticamente la carpeta de origen del archivo `.xlsx` seleccionado y guarda su correspondiente `.csv` en esa misma ubicación, eliminando rutas absolutas estáticas.

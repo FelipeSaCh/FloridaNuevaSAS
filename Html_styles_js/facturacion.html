@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factura Simple</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            color: #333;
+        }
+        .factura-box {
+            max-width: 600px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .info-seccion {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .tabla-factura {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .tabla-factura th, .tabla-factura td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .tabla-factura th {
+            background-color: #f8f9fa;
+        }
+        .total-seccion {
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="factura-box">
+    <div class="header">
+        <div>
+            <h2>Mi Empresa S.A.</h2>
+            <p>Nit: 123.456.789-0</p>
+        </div>
+        <div style="text-align: right;">
+            <h2 style="color: #666;">FACTURA</h2>
+            <p><strong>Nro:</strong> #00125</p>
+            <p><strong>Fecha:</strong> 03/06/2026</p>
+        </div>
+    </div>
+
+    <div class="info-seccion">
+        <div>
+            <strong>De:</strong><br>
+            Mi Empresa S.A.<br>
+            Calle Falsa 123<br>
+            contacto@miempresa.com
+        </div>
+        <div style="text-align: right;">
+            <strong>Para:</strong><br>
+            Juan Pérez<br>
+            Avenida Siempre Viva 742<br>
+            juan.perez@email.com
+        </div>
+    </div>
+
+    <table class="tabla-factura">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Cant.</th>
+                <th>Precio Unit.</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Diseño Web de Landing Page</td>
+                <td>1</td>
+                <td>$350.00</td>
+                <td>$350.00</td>
+            </tr>
+            <tr>
+                <td>Soporte Técnico Mensual</td>
+                <td>2</td>
+                <td>$50.00</td>
+                <td>$100.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total-seccion">
+        <p>Subtotal: $450.00</p>
+        <p>IVA (19%): $85.50</p>
+        <p style="color: #000; font-size: 1.4em;">Total a Pagar: $535.50</p>
+    </div>
+</div>
+
+</body>
+</html>
