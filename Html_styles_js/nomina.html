@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Nóminas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f1219;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: fit-content;
+            padding: 4px;
+        }
+
+        /* Clase webemd para autoajuste perfecto de la ventana */
+        .webemd {
+            width: 100%;
+            max-width: 800px;
+            height: fit-content;
+            display: block;
+            overflow: hidden;
+            box-sizing: border-box;
+            background: rgba(22, 28, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .header {
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+
+        .header h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        /* Subtítulo dinámico con el cliente global */
+        .header p {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 4px;
+        }
+
+        .company-badge {
+            color: #38bdf8;
+            font-weight: 500;
+        }
+
+        .payroll-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            height: fit-content;
+        }
+
+        /* Diseño de 2 columnas optimizado para textos largos */
+        .payroll-item {
+            display: flex;
+            align-items: center;
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 14px 18px;
+            transition: all 0.2s ease;
+            height: fit-content;
+        }
+
+        .payroll-item:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .month {
+            width: 35%;
+            font-weight: 600;
+            color: #38bdf8;
+            text-transform: capitalize;
+            font-size: 0.9rem;
+        }
+
+        .datetime-container {
+            width: 65%; 
+            display: flex;
+            font-size: 0.85rem;
+            color: #cbd5e1;
+        }
+
+        .datetime-container .full-date {
+            display: inline-block;
+            word-break: break-word;
+            line-height: 1.4;
+        }
+
+        .table-header {
+            display: flex;
+            padding: 0 18px 8px 18px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .th-period { width: 35%; }
+        .th-datetime { width: 65%; }
+
+    </style>
+</head>
+<body>
+
+    <div class="container webemd">
+        <div class="header">
+            <h2>Historial de Procesamiento de Nóminas</h2>
+            <p>Registros ejecutados para el cliente: <span class="company-badge">TEXTCLIENTE_GLOBAL</span></p>
+        </div>
+
+        <div class="table-header">
+            <div class="th-period">Periodo</div>
+            <div class="th-datetime">Detalle de Ejecución</div>
+        </div>
+
+        <div class="payroll-list">
+            
+            <div class="payroll-item">
+                <span class="month">TEXTMES_ENERO</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_ENERO</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_FEBRERO</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_FEBRERO</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_MARZO</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_MARZO</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_ABRIL</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_ABRIL</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_MAYO</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_MAYO</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_JUNIO</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_JUNIO</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_JULIO</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_JULIO</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_AGOSTO</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_AGOSTO</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_SEPTIEMBRE</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_SEPTIEMBRE</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_OCTUBRE</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_OCTUBRE</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_NOVIEMBRE</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_NOVIEMBRE</span>
+                </div>
+            </div>
+
+            <div class="payroll-item">
+                <span class="month">TEXTMES_DICIEMBRE</span>
+                <div class="datetime-container">
+                    <span class="full-date">TEXTCOMPLETO_DICIEMBRE</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Intervalo de limpieza adaptado para Glide
+        const checkGlideData = setInterval(() => {
+            let processedAny = false;
+            
+            document.querySelectorAll('.payroll-item').forEach(item => {
+                const dateElement = item.querySelector('.full-date');
+                if (dateElement) {
+                    const value = dateElement.textContent.trim();
+                    
+                    // Si el valor está vacío o mantiene el tag de la plantilla, remueve la fila
+                    if (!value || value === "" || value.includes("TEXTCOMPLETO_")) {
+                        item.remove();
+                        processedAny = true;
+                    }
+                }
+            });
+            
+            if (processedAny) {
+                clearInterval(checkGlideData);
+            }
+        }, 100);
+
+        setTimeout(() => clearInterval(checkGlideData), 4000);
+    </script>
+
+</body>
+</html>
