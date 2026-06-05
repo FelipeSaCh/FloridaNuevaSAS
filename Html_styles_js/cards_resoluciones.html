@@ -16,10 +16,9 @@ body{
     height:100%;
     background:transparent;
     font-family:'Inter',sans-serif;
-
-    
 }
-/* ───────── CARD ───────── */
+
+/* ───────── CARD (CON ANIMACIÓN DE ENTRADA) ───────── */
 .card{
     background:#151515;
     border-radius:18px;
@@ -34,6 +33,10 @@ body{
     width:100%;
     height:100%;
     min-height:100vh;
+    
+    /* Estado inicial y animación del contenedor principal */
+    opacity: 0;
+    animation: cardRender 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ───────── HEADER ───────── */
@@ -42,6 +45,9 @@ body{
     justify-content:space-between;
     align-items:flex-start;
     gap:12px;
+    
+    opacity: 0;
+    animation: elementoRender 0.4s ease-out 0.15s forwards;
 }
 
 .card-header h2{
@@ -64,11 +70,13 @@ body{
     white-space:nowrap;
 }
 
-/* ───────── GRID INFO ───────── */
+/* ───────── GRID INFO (CON EFECTO CASCADA SUTIL) ───────── */
 .info-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:16px 12px;
+    margin-top: 16px;
+    margin-bottom: 20px;
 }
 
 .info-item{
@@ -76,7 +84,19 @@ body{
     flex-direction:column;
     gap:4px;
     min-width:0;
+    
+    opacity: 0;
+    animation: elementoRender 0.4s ease-out forwards;
 }
+
+/* Retrasos escalonados para que la info aparezca de arriba a abajo */
+.info-grid .info-item:nth-child(1) { animation-delay: 0.20s; }
+.info-grid .info-item:nth-child(2) { animation-delay: 0.24s; }
+.info-grid .info-item:nth-child(3) { animation-delay: 0.28s; }
+.info-grid .info-item:nth-child(4) { animation-delay: 0.32s; }
+.info-grid .info-item:nth-child(5) { animation-delay: 0.36s; }
+.info-grid .info-item:nth-child(6) { animation-delay: 0.40s; }
+.info-grid .info-item:nth-child(7) { animation-delay: 0.44s; }
 
 .info-item.full{
     grid-column:1 / -1;
@@ -98,7 +118,7 @@ body{
     word-break:break-word;
 }
 
-/* ───────── DÍAS ───────── */
+/* ───────── DÍAS (ANIMACIÓN ENTRADA + PULSO) ───────── */
 .days-card{
     background:linear-gradient(
         135deg,
@@ -112,9 +132,10 @@ body{
     padding:18px;
     margin-bottom:18px;
     
+    opacity: 0;
+    /* Aparece un poco después de la info básica */
+    animation: elementoRender 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards;
 }
-
-
 
 .days-card small{
     display:block;
@@ -125,13 +146,15 @@ body{
 }
 
 .days-card strong{
+    display: block;
     font-size:42px;
     line-height:1;
     color:#ef4444;
     font-weight:800;
     letter-spacing:-2px;
-    animation: textPulse 2.5s infinite ease-in-out;
     margin-bottom:2px;
+    /* Mantiene tu animación original de pulso continuo */
+    animation: textPulse 2.5s infinite ease-in-out; 
 }
 
 @keyframes textPulse {
@@ -141,17 +164,21 @@ body{
     }
     50% {
         text-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
-        filter: brightness(1.2); /* Hace que el rojo se vea más vivo */
+        filter: brightness(1.2);
     }
 }
+
 /* ───────── FOOTER ───────── */
 .footer{
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    padding-top:6px;
+    padding-top:12px;
     border-top:1px solid #242424;
+    
+    opacity: 0;
+    animation: elementoRender 0.4s ease-out 0.55s forwards;
 }
 
 .footer span{
@@ -172,6 +199,31 @@ body{
 
     white-space:nowrap;
 }
+
+/* ==========================================
+   KEYFRAMES PARA EL RENDERIZADO INICIAL
+   ========================================== */
+@keyframes cardRender {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes elementoRender {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 </style>
 </head>
 
@@ -179,17 +231,12 @@ body{
 
 <div class="card">
 
-    <!-- HEADER -->
     <div class="card-header">
-
         <h2>
             TEXTNOMBRE
         </h2>
-
-
     </div>
 
-    <!-- INFO -->
     <div class="info-grid">
 
         <div class="info-item full">
@@ -227,36 +274,22 @@ body{
             <span>TEXTFECHA_FIN_RESOLUCION</span>
         </div>
 
-
     </div>
 
-    <!-- DIAS -->
     <div class="days-card">
-
         <small>Días Pendientes</small>
-
         <strong>
             TEXT_DIAS_PENDIENTES
         </strong>
-         
-        <small>Meses</small>
-        <strong>
-            TEXTMESES
-        </strong>
-
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
-
         <span>
             Responsable
         </span>
-
         <div class="badge">
             TEXT_RESPONSABLE
         </div>
-
     </div>
 
 </div>

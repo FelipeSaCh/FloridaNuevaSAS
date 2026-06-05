@@ -24,7 +24,7 @@
             padding: 4px;
         }
 
-        /* Clase webemd para autoajuste perfecto de la ventana */
+        /* Clase webemd para autoajuste perfecto de la ventana con ANIMACIÓN DE ENTRADA */
         .webemd {
             width: 100%;
             max-width: 800px;
@@ -39,14 +39,18 @@
             padding: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
             
-            /* Animación de entrada para el contenedor principal */
-            animation: containerFade 0.5s ease-out forwards;
+            /* Animación inicial del contenedor */
+            opacity: 0;
+            animation: containerRender 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .header {
             margin-bottom: 16px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 12px;
+            
+            opacity: 0;
+            animation: elementRender 0.4s ease-out 0.1s forwards;
         }
 
         .header h2 {
@@ -56,6 +60,7 @@
             letter-spacing: -0.5px;
         }
 
+        /* Subtítulo dinámico con el cliente global */
         .header p {
             font-size: 0.85rem;
             color: #94a3b8;
@@ -67,6 +72,22 @@
             font-weight: 500;
         }
 
+        .table-header {
+            display: flex;
+            padding: 0 18px 8px 18px;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            font-weight: 600;
+            
+            opacity: 0;
+            animation: elementRender 0.4s ease-out 0.18s forwards;
+        }
+
+        .th-period { width: 35%; }
+        .th-datetime { width: 65%; }
+
         .payroll-list {
             display: flex;
             flex-direction: column;
@@ -74,7 +95,7 @@
             height: fit-content;
         }
 
-        /* Diseño de 2 columnas optimizado con ANIMACIÓN DE ENTRADA */
+        /* Diseño de 2 columnas con ANIMACIÓN EN CASCADA INDIVIDUAL */
         .payroll-item {
             display: flex;
             align-items: center;
@@ -85,10 +106,9 @@
             transition: all 0.2s ease;
             height: fit-content;
             
-            /* Estado inicial oculto para la animación */
+            /* Preparación para el renderizado animado */
             opacity: 0;
-            transform: translateY(12px);
-            animation: itemFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: elementRender 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .payroll-item:hover {
@@ -118,50 +138,29 @@
             line-height: 1.4;
         }
 
-        .table-header {
-            display: flex;
-            padding: 0 18px 8px 18px;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #64748b;
-            font-weight: 600;
-        }
-
-        .th-period { width: 35%; }
-        .th-datetime { width: 65%; }
-
-        /* ========================================================
-           EFECTO CASCADA (Stagger) PARA LAS FILAS QUE SÍ APARECEN
-           ======================================================== */
-        .payroll-item:nth-child(1) { animation-delay: 0.05s; }
-        .payroll-item:nth-child(2) { animation-delay: 0.10s; }
-        .payroll-item:nth-child(3) { animation-delay: 0.15s; }
-        .payroll-item:nth-child(4) { animation-delay: 0.20s; }
-        .payroll-item:nth-child(5) { animation-delay: 0.25s; }
-        .payroll-item:nth-child(6) { animation-delay: 0.30s; }
-        .payroll-item:nth-child(7) { animation-delay: 0.35s; }
-        .payroll-item:nth-child(8) { animation-delay: 0.40s; }
-        .payroll-item:nth-child(9) { animation-delay: 0.45s; }
-        .payroll-item:nth-child(10) { animation-delay: 0.50s; }
-        .payroll-item:nth-child(11) { animation-delay: 0.55s; }
-        .payroll-item:nth-child(12) { animation-delay: 0.60s; }
+        /* ───────── RETRASOS EN CASCADA PARA LOS MESES VISIBLES ───────── */
+        .payroll-list .payroll-item:nth-child(1)  { animation-delay: 0.22s; }
+        .payroll-list .payroll-item:nth-child(2)  { animation-delay: 0.27s; }
+        .payroll-list .payroll-item:nth-child(3)  { animation-delay: 0.32s; }
+        .payroll-list .payroll-item:nth-child(4)  { animation-delay: 0.37s; }
+        .payroll-list .payroll-item:nth-child(5)  { animation-delay: 0.42s; }
+        .payroll-list .payroll-item:nth-child(6)  { animation-delay: 0.47s; }
+        .payroll-list .payroll-item:nth-child(7)  { animation-delay: 0.52s; }
+        .payroll-list .payroll-item:nth-child(8)  { animation-delay: 0.57s; }
+        .payroll-list .payroll-item:nth-child(9)  { animation-delay: 0.62s; }
+        .payroll-list .payroll-item:nth-child(10) { animation-delay: 0.67s; }
+        .payroll-list .payroll-item:nth-child(11) { animation-delay: 0.72s; }
+        .payroll-list .payroll-item:nth-child(12) { animation-delay: 0.77s; }
 
         /* KEYFRAMES */
-        @keyframes containerFade {
-            from { opacity: 0; transform: scale(0.98); }
+        @keyframes containerRender {
+            from { opacity: 0; transform: scale(0.97); }
             to { opacity: 1; transform: scale(1); }
         }
 
-        @keyframes itemFadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes elementRender {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
     </style>
@@ -170,10 +169,9 @@
 
     <div class="container webemd">
         <div class="header">
-            <h2>Historial de Procesamiento de Nóminas</h2>
+            <h2>Historial de Procesamiento de Acuses</h2>
             <p>Registros ejecutados para el cliente: <span class="company-badge">TEXTCLIENTE_GLOBAL</span></p>
         </div>
-        <p style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 16px;">TEXTOOBSERSVACIONES</p>
 
         <div class="table-header">
             <div class="th-period">Periodo</div>
@@ -270,8 +268,7 @@
     </div>
 
     <script>
-        // Mantenemos tu lógica inteligente de limpieza. 
-        // Al removerse los vacíos del DOM por JS, el orden de los :nth-child se actualiza solo en CSS
+        // Intervalo de limpieza adaptado para Glide
         const checkGlideData = setInterval(() => {
             let processedAny = false;
             
@@ -280,6 +277,7 @@
                 if (dateElement) {
                     const value = dateElement.textContent.trim();
                     
+                    // Si el valor está vacío o mantiene el tag de la plantilla, remueve la fila
                     if (!value || value === "" || value.includes("TEXTCOMPLETO_")) {
                         item.remove();
                         processedAny = true;
@@ -290,7 +288,7 @@
             if (processedAny) {
                 clearInterval(checkGlideData);
             }
-        }, 50); // Un pelín más rápido para ganarle al renderizado visual
+        }, 100);
 
         setTimeout(() => clearInterval(checkGlideData), 4000);
     </script>

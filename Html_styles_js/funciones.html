@@ -20,6 +20,10 @@
       min-height: 1056px;
       background: #fff;
       padding: 60px 70px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      
+      /* Animación suave de entrada para toda la hoja */
+      animation: cartaEntrada 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
     table.encabezado {
@@ -27,6 +31,16 @@
       border-collapse: collapse;
       margin-bottom: 0;
     }
+
+    table.encabezado tr {
+      /* Efecto cascada inicial para las filas del encabezado */
+      opacity: 0;
+      animation: elementoEntrada 0.4s ease-out forwards;
+    }
+    table.encabezado tr:nth-child(1) { animation-delay: 0.1s; }
+    table.encabezado tr:nth-child(2) { animation-delay: 0.18s; }
+    table.encabezado tr:nth-child(3) { animation-delay: 0.26s; }
+    table.encabezado tr:nth-child(4) { animation-delay: 0.34s; }
 
     table.encabezado td {
       border: 1px solid #000;
@@ -57,6 +71,15 @@
       margin-top: 0;
     }
 
+    /* Animación para las secciones de la tabla de contenido */
+    table.cuerpo tr {
+      opacity: 0;
+      animation: elementoEntrada 0.5s ease-out forwards;
+    }
+    table.cuerpo tr:nth-child(1) { animation-delay: 0.42s; } /* Título actividades */
+    table.cuerpo tr:nth-child(2) { animation-delay: 0.50s; } /* Subtítulo funciones */
+    table.cuerpo tr:nth-child(3) { animation-delay: 0.58s; } /* Bloque de ítems descritos */
+
     table.cuerpo td {
       border: 1px solid #000;
       padding: 6px 10px;
@@ -80,10 +103,38 @@
       font-size: 12pt;
     }
 
-    /* ESTILOS OPTIMIZADOS PARA IMPRESIÓN */
+    /* ==========================================
+       KEYFRAMES PARA LAS ANIMACIONES EN PANTALLA
+       ========================================== */
+    @keyframes cartaEntrada {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes elementoEntrada {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================
+       ESTILOS OPTIMIZADOS PARA IMPRESIÓN / PDF
+       (Se anulan las animaciones para evitar bugs)
+       ========================================== */
     @media print {
       @page {
-        margin: 0; /* Remueve los márgenes físicos que mete el navegador por defecto */
+        margin: 0;
       }
       body { 
         background: none; 
@@ -93,9 +144,16 @@
       .carta { 
         box-shadow: none;
         width: 100%;
-        min-height: 0; /* Quitamos la altura fija para evitar el salto de página */
+        min-height: 0;
         height: auto;
-        padding: 40px 50px; /* Reducimos ligeramente el padding solo en la impresión */
+        padding: 40px 50px;
+        animation: none !important; /* Quita animación al imprimir */
+        transform: none !important;
+      }
+      table.encabezado tr, table.cuerpo tr {
+        opacity: 1 !important;     /* Asegura visibilidad total en impresión */
+        animation: none !important;
+        transform: none !important;
       }
     }
   </style>
@@ -106,7 +164,7 @@
   <table class="encabezado">
     <tr>
       <td class="celda-proceso">NOMBRE DEL PROCESO</td>
-      <td class="celda-valor" colspan="3">REUNION ADMINISTRATIVA</td>
+      <td class="celda-valor" colspan="3">REUNIÓN ADMINISTRATIVA</td>
     </tr>
     <tr>
       <td class="celda-label">OBJETIVO:</td>
@@ -115,7 +173,7 @@
     <tr>
       <td class="celda-label">FECHA:</td>
       <td class="celda-valor">TEXTDATE</td>
-      <td class="celda-label">NUMERO DE ACTA:</td>
+      <td class="celda-label">NÚMERO DE ACTA:</td>
       <td class="celda-valor">TEXTACTNUMBER</td>
     </tr>
     <tr>
@@ -146,26 +204,25 @@
 
     items.forEach(item => {
       let textoOriginal = item.innerText.trim();
-      const patronSeparadores = /(?=(?:^|\s)(?:[-*•]|\d+[\.)]|[a-zA-Z][\.)])\s*\S)/g;
-      
+
+      const patronSeparadores = /\s+(?=[-•*])/g;
       let lineas = textoOriginal.split(patronSeparadores);
 
       let lineasLimpias = lineas
         .map(linea => linea.trim())
         .filter(linea => linea.length > 0);
 
-      // Si la primera línea quedó con doble guion por el residuo del split, lo corregimos
-      if (lineasLimpias.length > 0 && lineasLimpias[0].startsWith('--')) {
-        lineasLimpias[0] = lineasLimpias[0].substring(1);
-      }
-
+      // Aquí integramos un efecto de animación también para las líneas dinámicas separadas por JS
       item.innerHTML = lineasLimpias
-        .map(linea => `<div style="margin-bottom: 12px;">${linea}</div>`)
+        .map((linea, index) => {
+          // Generamos un pequeño retraso (delay) dinámico por cada línea separada
+          let delay = 0.6 + (index * 0.08); 
+          return `<div style="margin-bottom: 14px; line-height: 1.4; text-align: left; opacity: 0; animation: elementoEntrada 0.4s ease-out ${delay}s forwards;">${linea}</div>`;
+        })
         .join('');
     });
   });
 </script>
-   Script
 
 </body>
 </html>
