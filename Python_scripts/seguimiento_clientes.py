@@ -2,7 +2,7 @@ import pandas as pd
 
 # 1. Cargar tu archivo CSV original
 # Cambia 'tus_clientes.csv' por el nombre real de tu archivo
-df_original = pd.read_csv(r"C:\Users\USUARIO\Downloads\seguimiento de clientes (1).csv")
+df_original = pd.read_csv(r"C:\Users\USUARIO\Desktop\222.csv")
 
 # 2. Crear un DataFrame temporal que solo contenga los 12 meses
 meses = [

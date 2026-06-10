@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Información Tributaria</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:"Segoe UI", Arial, sans-serif;
+    }
+
+    body{
+        background:#f4f6f9;
+        padding:30px;
+        color:#2c3e50;
+    }
+
+    .container{
+        max-width:1200px;
+        margin:auto;
+    }
+
+    .card{
+        background:#fff;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 4px 12px rgba(0,0,0,.08);
+        margin-bottom:25px;
+    }
+
+    .card-header{
+        padding:14px 20px;
+        font-weight:600;
+        font-size:16px;
+        color:#fff;
+        letter-spacing:.5px;
+    }
+
+    .grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:15px;
+        padding:20px;
+    }
+
+    .field{
+        display:flex;
+        flex-direction:column;
+    }
+
+    .field label{
+        font-size:12px;
+        font-weight:700;
+        text-transform:uppercase;
+        color:#6b7280;
+        margin-bottom:6px;
+    }
+
+    .field span{
+        background:#f8fafc;
+        border:1px solid #dbe3ea;
+        border-radius:8px;
+        padding:10px 12px;
+        min-height:42px;
+        display:flex;
+        align-items:center;
+        word-break:break-word;
+    }
+
+    .empresa{
+        background:#ffffff;
+        border-radius:12px;
+        box-shadow:0 4px 12px rgba(0,0,0,.08);
+        margin-bottom:25px;
+    }
+
+    .empresa .grid{
+        padding-top:25px;
+    }
+
+    .legal{
+        background:#d97706;
+    }
+
+    .contador{
+        background:#0284c7;
+    }
+
+    .revisor{
+        background:#7e22ce;
+    }
+
+    .ica{
+        background:#16a34a;
+    }
+
+    .iss{
+        background:#be185d;
+    }
+
+    @media(max-width:768px){
+        body{
+            padding:15px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- DATOS EMPRESA -->
+    <div class="empresa">
+        <div class="grid">
+            <div class="field">
+                <label>NIT</label>
+                <span>{{EMPRESA_NIT}}</span>
+            </div>
+
+            <div class="field">
+                <label>Nombre o Razón Social</label>
+                <span>{{EMPRESA_RAZON_SOCIAL}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- REPRESENTANTE LEGAL -->
+    <div class="card">
+        <div class="card-header legal">
+            REPRESENTANTE LEGAL
+        </div>
+
+        <div class="grid">
+            <div class="field">
+                <label>Representante Legal</label>
+                <span>{{REPRESENTANTE_NOMBRE}}</span>
+            </div>
+
+            <div class="field">
+                <label>Cédula</label>
+                <span>{{REPRESENTANTE_CEDULA}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave CTA R. Legal DIAN</label>
+                <span>{{REPRESENTANTE_CLAVE_CTA_DIAN}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave Firma Representante Legal DIAN</label>
+                <span>{{REPRESENTANTE_CLAVE_FIRMA_DIAN}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTADOR -->
+    <div class="card">
+        <div class="card-header contador">
+            CONTADOR
+        </div>
+
+        <div class="grid">
+            <div class="field">
+                <label>Nombre Contador</label>
+                <span>{{CONTADOR_NOMBRE}}</span>
+            </div>
+
+            <div class="field">
+                <label>NIT</label>
+                <span>{{CONTADOR_NIT}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave DIAN Contador</label>
+                <span>{{CONTADOR_CLAVE_DIAN}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave Firma Contador</label>
+                <span>{{CONTADOR_CLAVE_FIRMA}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- REVISOR FISCAL -->
+    <div class="card">
+        <div class="card-header revisor">
+            REVISOR FISCAL
+        </div>
+
+        <div class="grid">
+            <div class="field">
+                <label>Revisor Fiscal</label>
+                <span>{{REVISOR_NOMBRE}}</span>
+            </div>
+
+            <div class="field">
+                <label>NIT</label>
+                <span>{{REVISOR_NIT}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave DIAN Revisor</label>
+                <span>{{REVISOR_CLAVE_DIAN}}</span>
+            </div>
+
+            <div class="field">
+                <label>Firma Revisor Fiscal</label>
+                <span>{{REVISOR_CLAVE_FIRMA}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- USUARIO ICA -->
+    <div class="card">
+        <div class="card-header ica">
+            USUARIO ICA
+        </div>
+
+        <div class="grid">
+            <div class="field">
+                <label>Usuario ICA</label>
+                <span>{{ICA_USUARIO}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave IND y CCIO</label>
+                <span>{{ICA_CLAVE_IND_CCIO}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave IND y CCIO para Firmar Declarante</label>
+                <span>{{ICA_CLAVE_FIRMA_DECLARANTE}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave IND y CCIO para Firmar Contador</label>
+                <span>{{ICA_CLAVE_FIRMA_CONTADOR}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- OPERADOR ISS -->
+    <div class="card">
+        <div class="card-header iss">
+            OPERADOR ISS
+        </div>
+
+        <div class="grid">
+            <div class="field">
+                <label>Operador ISS</label>
+                <span>{{ISS_OPERADOR}}</span>
+            </div>
+
+            <div class="field">
+                <label>Usuario</label>
+                <span>{{ISS_USUARIO}}</span>
+            </div>
+
+            <div class="field">
+                <label>Clave</label>
+                <span>{{ISS_CLAVE}}</span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
