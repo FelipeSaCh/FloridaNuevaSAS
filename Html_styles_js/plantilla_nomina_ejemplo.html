@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Nómina</title>
+    <style>
+        /* Configuración del tamaño carta y página */
+        @page {
+            size: letter;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Contenedor tamaño carta */
+        .page-container {
+            width: 8.5in;
+            height: 11in;
+            background-color: #ffffff;
+            padding: 0.5in;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Estilos globales de las tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        th, td {
+            border: 1.5px solid #000000;
+            padding: 6px 4px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* Colores específicos del diseño */
+        .bg-mayo {
+            background-color: #ffffff;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        .bg-header-top {
+            background-color: #fce4d6; /* Rosado/Naranja muy claro */
+            height: 20px;
+        }
+
+        .bg-yellow {
+            background-color: #ffff00; /* Amarillo vivo */
+        }
+
+        .bg-gray {
+            background-color: #aeaaaa; /* Gris oscuro */
+            color: #000000;
+            font-size: 10px;
+        }
+
+        /* Alineaciones y anchos específicos */
+        .text-left {
+            text-align: left;
+            padding-left: 8px;
+        }
+
+        .text-right {
+            text-align: right;
+            padding-right: 8px;
+        }
+
+        .col-id { width: 18%; }
+        .col-apellido { width: 16%; }
+        .col-nombre { width: 16%; }
+        .col-salario { width: 18%; }
+
+        /* Fila vacía de separación o final */
+        .empty-row-yellow {
+            background-color: #ffff00;
+            height: 35px;
+            border: 1.5px solid #000000;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+
+        <table>
+            <tr>
+                <th colspan="6" class="bg-mayo">MAYO</th>
+            </tr>
+            <tr class="bg-header-top">
+                <td colspan="2">INFO_EJEMPLO_1</td>
+                <td colspan="4">INFO_EJEMPLO_2</td>
+            </tr>
+            <tr>
+                <td colspan="6">FECHA DE VENCIMIENTO</td>
+            </tr>
+            <tr>
+                <td class="bg-yellow text-left" style="font-size: 12px;">VALOR A PAGAR<br>EMPLEADOS:</td>
+                <td colspan="4" class="bg-yellow text-left" style="font-size: 20px;">$</td>
+                <td class="bg-yellow text-right" style="font-size: 20px;">1.840.500</td>
+            </tr>
+            <tr class="bg-gray">
+                <th class="col-id">IDENTIFICACION</th>
+                <th class="col-apellido">PRIMER APELLIDO</th>
+                <th class="col-apellido">SEGUNDO APELLIDO</th>
+                <th class="col-nombre">PRIMER NOMBRE</th>
+                <th class="col-nombre">SEGUNDO NOMBRE</th>
+                <th class="bg-yellow col-salario">SALARIO BASICO</th>
+            </tr>
+            <tr>
+                <td>10234567</td>
+                <td>RODRIGUEZ</td>
+                <td>CASTILLO</td>
+                <td>MARIA</td>
+                <td>LUCILA</td>
+                <td class="text-left">$ 613.500</td>
+            </tr>
+            <tr>
+                <td>11223344</td>
+                <td>PEREZ</td>
+                <td>ROZO</td>
+                <td>JUAN</td>
+                <td>EMILIO</td>
+                <td class="text-left">$ 613.500</td>
+            </tr>
+            <tr>
+                <td>79852143</td>
+                <td>ZAPATA</td>
+                <td>ALVAREZ</td>
+                <td>CARLOS</td>
+                <td>ALBERTO</td>
+                <td class="text-left" style="border: 2px solid #008000;">$ 613.500</td> </tr>
+        </table>
+
+
+        <table>
+            <tr>
+                <td class="bg-yellow text-left" style="font-size: 12px; width: 18%;">VALOR A PAGAR<br>INDEPENDIENTE:</td>
+                <td colspan="4" class="bg-yellow text-left" style="font-size: 20px;">$</td>
+                <td class="bg-yellow text-right" style="font-size: 20px; width: 18%;">281.400</td>
+            </tr>
+            <tr class="bg-gray">
+                <th class="col-id">IDENTIFICACION</th>
+                <th class="col-apellido">PRIMER APELLIDO</th>
+                <th class="col-apellido">SEGUNDO APELLIDO</th>
+                <th class="col-nombre">PRIMER NOMBRE</th>
+                <th class="col-nombre">SEGUNDO NOMBRE</th>
+                <th class="bg-yellow col-salario">SALARIO BASICO</th>
+            </tr>
+            <tr>
+                <td>98765432</td>
+                <td>ZAPATA</td>
+                <td>ALVAREZ</td>
+                <td>LUZ</td>
+                <td>MARINA</td>
+                <td class="text-left">$ 281.400</td>
+            </tr>
+        </table>
+
+        <div class="empty-row-yellow"></div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plantilla de Nómina</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+            font-weight: bold;
+            color: #000000;
+            table-layout: fixed;
+        }
+
+        th, td {
+            border: 1.5px solid #000000;
+            padding: 8px 4px;
+            text-align: center;
+            vertical-align: middle;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .bg-mayo { background-color: #ffffff; font-size: 14px; letter-spacing: 1px; }
+        .bg-header-top { background-color: #fce4d6; height: 20px; }
+        .bg-yellow { background-color: #ffff00; }
+        .bg-gray { background-color: #aeaaaa; font-size: 10px; }
+        .text-left { text-align: left; padding-left: 8px; }
+        .text-right { text-align: right; padding-right: 8px; }
+
+        /* Ajuste de porcentajes: Le damos 20% a los extremos para evitar recortes */
+        .col-id { width: 20%; }
+        .col-apellido1 { width: 15%; }
+        .col-apellido2 { width: 15%; }
+        .col-nombre1 { width: 15%; }
+        .col-nombre2 { width: 15%; }
+        .col-salario { width: 20%; }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="6" class="bg-mayo">TEXTMES</th>
+                </tr>
+                <tr class="bg-header-top">
+                    <td colspan="2">TEXTNIT</td>
+                    <td colspan="4">TEXTVENCIMIENTO</td>
+                </tr>
+                <tr>
+                    <td colspan="6">FECHA DE VENCIMIENTO</td>
+                </tr>
+                <tr>
+                    <td class="bg-yellow text-left" style="font-size: 11px;">VALOR A PAGAR<br>EMPLEADOS:</td>
+                    <td colspan="4" class="bg-yellow text-left" style="font-size: 18px;">$ TEXTTOTAL</td>
+                    
+                </tr>
+                <tr class="bg-gray">
+                    <th class="col-id">IDENTIFICACION</th>
+                    <th class="col-apellido1">PRIMER APELLIDO</th>
+                    <th class="col-apellido2">SEGUNDO APELLIDO</th>
+                    <th class="col-nombre1">PRIMER NOMBRE</th>
+                    <th class="col-nombre2">SEGUNDO NOMBRE</th>
+                    <th class="bg-yellow col-salario">SALARIO BASICO</th>
+                </tr>
+            </thead>
+            <tbody>
+                
