@@ -46,7 +46,7 @@ if archivo_subido is not None:
 
         # 5. Renderizar la tabla interactiva de Streamlit
         st.subheader("Vista Previa de los Datos")
-        st.dataframe(df, use_container_width=True)
+        st.dataframe(df, width="stretch")
 
         st.success(f"¡Archivo '{nombre_archivo}' cargado con éxito!")
 
