@@ -14,6 +14,13 @@ Proyecto_01/
 ├── requirements.txt        # Dependencias de Python requeridas
 ├── run.py                  # Script de ejecución del punto de entrada principal
 │
+├── assets/                 # Imágenes, iconos y recursos estáticos del proyecto
+│
+├── data/
+│   └── uploads/            # Archivos guardados o subidos por los usuarios (no se suben a Git)
+│
+├── temp/                   # Archivos temporales generados durante la ejecución (no se suben a Git)
+│
 ├── src/                    # Código fuente de la aplicación
 │   ├── __init__.py         # Inicializador de paquete
 │   ├── main.py             # Punto de entrada principal (lógica del programa)

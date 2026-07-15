@@ -1,0 +1,5 @@
+# Ignorar todos los archivos temporales creados en esta carpeta
+*
+
+# Excepto este archivo .gitignore
+!.gitignore
