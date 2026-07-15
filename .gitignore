@@ -17,3 +17,6 @@ Thumbs.db
 # Datos y datasets
 *.csv
 
+# IDEs
+.vscode/
+
